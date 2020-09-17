@@ -1,0 +1,41 @@
+import torch
+import torch.nn
+import torchtext
+import random
+from torchtext.data.utils import get_tokenizer
+input_file = './CID-SMILES.txt'
+masked_output_file = './CID-SMILES_train.txt'
+
+smile_mol_tokenizer = torchtext.data.Field(init_token='<BEGIN>',
+                                          pad_token='<PAD>',
+                                          fix_length=True,
+                                          tokenize=list,
+                                          eos_token='<END>')
+
+smile_data = torchtext.data.TabularDataset(path=input_file,
+                                          format='tsv',
+                                          fields=[('smile_mol', smile_mol_tokenizer)])
+
+train_data, test_data = smile_data.split(split_ratio=0.7)
+smile_mol_tokenizer.build_vocab(smile_data)
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+possible_tokens = smile_mol_tokenizer.vocab.itos[4:]
+input_data = open(input_file, 'r')
+masked_output_file = open(masked_output_file, 'w')
+
+for mol in input_data:
+    mol = mol.rstrip()
+    masked_mol = ""
+    for i in range(len(mol)):
+        if random.random() < 0.15:
+            if random.random() < 0.8:
+                masked_mol += " " ### " " means the [MASK].
+            else:
+                if random.random() < 0.5:
+                    masked_mol += random.choice(possible_tokens)
+                else:
+                    masked_mol += mol[i]
+        else:
+            masked_mol += mol[i]
+    masked_output_file.write("$"+masked_mol + "," + "$" +mol + "\n") ## "$" as the <REP> token
