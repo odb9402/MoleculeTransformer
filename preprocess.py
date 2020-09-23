@@ -50,3 +50,5 @@ for mol in input_data:
             masked_mol += mol[i] ### Ignore sequence &. The index of & will be ignored when calculate the loss.
             output_mol += "&"
     masked_output_file.write("$"+masked_mol+"$"+","+"$" + output_mol +"$"+ "\n") ## "$" as the <BEGIN> and <END> token
+
+masked_output_file.close()
