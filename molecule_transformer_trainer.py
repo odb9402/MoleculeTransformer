@@ -13,6 +13,12 @@ import matplotlib
 matplotlib.style.use("ggplot")
 
 class MoleculeTransformerTrainer():
+    """
+    Attrs:
+
+    Methods:
+
+    """
     def __init__(self, train_file, class_weight='none'):
         self.mol_emsize = 128 # Embedded molecule sizes
         self.n_layers = 8 # Number of attentions and feed-forwards
@@ -63,7 +69,7 @@ class MoleculeTransformerTrainer():
         self.smile_mol_tokenizer.build_vocab(smile_data_training)
         self.smile_mol_masked_tokenizer.vocab = self.smile_mol_tokenizer.vocab
         self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
-                                                                      batch_size=128,
+                                                                      batch_size=512,
                                                                       shuffle=True,
                                                                       device=self.device,
                                                                       repeat=False,
@@ -102,7 +108,7 @@ class MoleculeTransformerTrainer():
         self.optimizer = torch.optim.AdamW(self.model.parameters(), lr=self.lr, weight_decay=0.01)
         self.decay_scheduler = torch.optim.lr_scheduler.StepLR(self.optimizer, 1., gamma=0.99)
 
-    def train(self, remain_epochs, log='stdout'):
+    def train(self, log='stdout'):
         if log == 'fout':
             log_file = open('train_log.txt', 'w')
 
@@ -121,7 +127,7 @@ class MoleculeTransformerTrainer():
 
             total_loss += loss.item()
             log_interval = 200
-            schedule_interval = 1000
+            schedule_interval = 10000
 
             if i % log_interval == 0 and i > 0:
                 # ACC check
@@ -131,7 +137,7 @@ class MoleculeTransformerTrainer():
                 elapsed = time.time() - start_time
                 log_str = ' {:5d}/{:5d} batches | lr {:02.10f} | ms/batch {:5.2f} | loss {:5.8f} | acc {:6.4f}'.format(
                             i, len(self.train_batch), self.decay_scheduler.get_last_lr()[0],
-                            elapsed * 1000 / log_interval, cur_loss, float(masked_hit)/float(masked_num))
+                            elapsed * 1000 / log_interval, cur_loss, masked_hit/masked_num)
                 if log == 'stdout':
                     print(log_str)
                 elif log == 'fout':
@@ -148,22 +154,30 @@ class MoleculeTransformerTrainer():
                 self.decay_scheduler.step()
             i += 1
 
-        remain_epochs = remain_epochs - 1
-        if remain_epochs <= 0:
-            pass
-        else:
-            self.train(remain_epochs)
-
     def evaluate(self):
         self.model.eval()
         total_loss = 0.
         with torch.no_grad():
-            for batch in test_batch:
+            for batch in self.test_batch:
                 data, targets = batch.input, batch.output
                 predicts = self.model(data).transpose(0,1)
                 total_loss += len(data) * self.criterion(predicts.reshape(-1, self.n_tokens), targets.view(-1)).item()
 
         return total_loss / (len(test_batch) - 1)
+
+    def evaluate_acc(self):
+        self.model.eval()
+        total_masked_num = 0
+        total_masked_hit = 0
+        with torch.no_grad():
+            for batch in self.test_batch:
+                data, targets = batch.input, batch.output
+                predicts = self.model(data).transpose(0, 1)
+                predicted_val = torch.max(torch.softmax(predicts, 2), 2)[1]
+                masked_num, masked_hit = self.count_hit(predicted_val, batch.output, 0)
+                total_masked_num += masked_num
+                total_masked_hit += masked_hit
+        return total_masked_hit/total_masked_num
 
     def export_training_figure(self):
         plt.figure(figsize(14,10))
@@ -211,7 +225,7 @@ class MoleculeTransformerTrainer():
         """
         masked_num = (Y != idx).sum()
         masked_hit = torch.logical_and(Y - h == 0, h != idx).sum()
-        return masked_num, masked_hit
+        return float(masked_num), float(masked_hit)
 
     @staticmethod
     def tokenize_label(mol_str):
