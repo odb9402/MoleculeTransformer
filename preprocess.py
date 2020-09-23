@@ -2,9 +2,15 @@ import torch
 import torch.nn
 import torchtext
 import random
+import re
 from torchtext.data.utils import get_tokenizer
 input_file = './CID-SMILES.txt'
-masked_output_file = './CID-SMILES_train.txt'
+masked_output_file = './CID-SMILES_train_valid.txt'
+
+def valid_SMILES(mol_str):
+    template = re.compile('(^([^J][0-9BCOHNSOPrIFla@+\-\[\]\(\)\\\/%=#$]{6,})$)', re.I)
+    match = template.match(mol_str)
+    return bool(match)
 
 smile_mol_tokenizer = torchtext.data.Field(init_token='<BEGIN>',
                                           pad_token='<PAD>',
@@ -26,7 +32,10 @@ masked_output_file = open(masked_output_file, 'w')
 
 for mol in input_data:
     mol = mol.rstrip()
+    if not valid_SMILES(mol):
+        continue
     masked_mol = ""
+    output_mol = ""
     for i in range(len(mol)):
         if random.random() < 0.15:
             if random.random() < 0.8:
@@ -36,6 +45,8 @@ for mol in input_data:
                     masked_mol += random.choice(possible_tokens)
                 else:
                     masked_mol += mol[i]
+            output_mol += mol[i]
         else:
-            masked_mol += mol[i]
-    masked_output_file.write("$"+masked_mol + "," + "$" +mol + "\n") ## "$" as the <REP> token
+            masked_mol += mol[i] ### Ignore sequence &. The index of & will be ignored when calculate the loss.
+            output_mol += "&"
+    masked_output_file.write("$"+masked_mol+"$"+","+"$" + output_mol +"$"+ "\n") ## "$" as the <BEGIN> and <END> token
