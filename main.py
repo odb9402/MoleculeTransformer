@@ -22,7 +22,7 @@ print("Training processes . . . .")
 
 for i in range(args.epochs):
     trainer.train(log='stdout')
-    trainer.save_model("model{}".format(i))
+    trainer.save_model("model{}".format(i+1))
     acc = trainer.evaluate_acc()
-    print("ACCURACY of epoch {} = {}".format(acc))
+    print("ACCURACY of epoch {} = {}".format(i+1, acc))
 trainer.export_training_figure()

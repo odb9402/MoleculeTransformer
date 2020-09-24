@@ -4,8 +4,15 @@ import torchtext
 import random
 import re
 from torchtext.data.utils import get_tokenizer
-input_file = './CID-SMILES.txt'
-masked_output_file = './CID-SMILES_train_valid.txt'
+import argparse
+
+parser = argparse.ArgumentParser(description="Molecule transformer training")
+parser.add_argument("-i", "--input", default="CID-SMILES.txt", help="Input training raw SMILES file.")
+parser.add_argument("-o", "--output", default="CID-SMILES_train.txt", help="Comma separated training SMILES file.")
+args = parser.parse_args()
+
+input_file = args.input #'./CID-SMILES.txt'
+masked_output_file = args.output #'./CID-SMILES_train_valid.txt'
 
 def valid_SMILES(mol_str):
     template = re.compile('(^([^J][0-9BCOHNSOPrIFla@+\-\[\]\(\)\\\/%=#$]{6,})$)', re.I)

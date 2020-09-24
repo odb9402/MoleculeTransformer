@@ -132,7 +132,7 @@ class MoleculeTransformerTrainer():
             if i % log_interval == 0 and i > 0:
                 # ACC check
                 predicted_val = torch.max(torch.softmax(predicts, 2), 2)[1]
-                masked_num, masked_hit = self.count_hit(predicted_val, batch.output, 0)
+                masked_num, masked_hit = self.count_acc(batch.input, predicted_val, batch.output, self.mask_token)
                 cur_loss = total_loss / log_interval
                 elapsed = time.time() - start_time
                 log_str = ' {:5d}/{:5d} batches | lr {:02.10f} | ms/batch {:5.2f} | loss {:5.8f} | acc {:6.4f}'.format(
@@ -174,21 +174,21 @@ class MoleculeTransformerTrainer():
                 data, targets = batch.input, batch.output
                 predicts = self.model(data).transpose(0, 1)
                 predicted_val = torch.max(torch.softmax(predicts, 2), 2)[1]
-                masked_num, masked_hit = self.count_hit(predicted_val, batch.output, 0)
+                masked_num, masked_hit = self.count_acc(batch.input, predicted_val, batch.output, self.mask_token)
                 total_masked_num += masked_num
                 total_masked_hit += masked_hit
         return total_masked_hit/total_masked_num
 
-    def export_training_figure(self):
+    def export_training_figure(self, epochs=1):
         plt.figure(figsize(14,10))
         plt.plot(self.loss_history)
         plt.title("The history of training losses")
-        plt.savefig("training_loss.png")
+        plt.savefig("training_loss_{}.png".format(epochs))
 
         plt.figure(figsize(14,10))
         plt.plot(self.acc_history)
         plt.title("The history of training accuracy")
-        plt.savefig("training_accuracy.png")
+        plt.savefig("training_accuracy_{}.png".format(epochs))
 
     def save_model(self, PATH="."):
         """
@@ -217,6 +217,7 @@ class MoleculeTransformerTrainer():
         """
         h : (N, S) predicted results from transformer should be transposed.
         Y : (N, S) ground truths of molecule tokens.
+        idx : The token index of <unk>, which is the masked positions of labels.
 
         N = Batch size
         S = Sequence length
@@ -225,6 +226,26 @@ class MoleculeTransformerTrainer():
         """
         masked_num = (Y != idx).sum()
         masked_hit = torch.logical_and(Y - h == 0, h != idx).sum()
+
+        return float(masked_num), float(masked_hit)
+
+    @staticmethod
+    def count_acc(X, h, Y, idx):
+        """
+        X : (N, S) input data of the transformer model.
+        h : (N, S) predicted results from transformer should be transposed.
+        Y : (N, S) ground truths of molecule tokens.
+        idx : The token index of the masked token.
+
+        N = Batch size
+        S = Sequence length
+
+        return:
+        """
+        masked_pos = (X == idx)
+        masked_num = masked_pos.sum()
+        masked_hit = torch.logical_and(Y - h == 0, masked_pos).sum()
+
         return float(masked_num), float(masked_hit)
 
     @staticmethod
