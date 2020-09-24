@@ -22,5 +22,5 @@ optional arguments:
 ```
 
 ### Final accuracy
-- 
+- Epochs 1, without loss weights: 0.9471
 -
