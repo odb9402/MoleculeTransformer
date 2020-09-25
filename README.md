@@ -1,7 +1,7 @@
 
 # Molecule transformer using BERT based model
 
-The BERT-based embedding model SMILES molecule representation from the paper ["Self-Attention Based Molecule Representation for Predicting Drug-Target Interaction"](http://proceedings.mlr.press/v106/shin19a.html) written by Shin et al 2019. These sources are pytorch-implemented codes.
+The BERT-based embedding model for SMILES molecule representation from the paper ["Self-Attention Based Molecule Representation for Predicting Drug-Target Interaction"](http://proceedings.mlr.press/v106/shin19a.html) written by Shin et al 2019. These sources are pytorch-implemented codes.
 
 ## Usage
 ```python
@@ -22,5 +22,5 @@ optional arguments:
 ```
 
 ### Final accuracy
-- 
+- Epochs 1, without loss weights: 0.9471
 -
