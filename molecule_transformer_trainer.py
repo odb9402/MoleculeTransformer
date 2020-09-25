@@ -180,12 +180,12 @@ class MoleculeTransformerTrainer():
         return total_masked_hit/total_masked_num
 
     def export_training_figure(self, epochs=1):
-        plt.figure(figsize(14,10))
+        plt.figure(figsize=(14,10))
         plt.plot(self.loss_history)
         plt.title("The history of training losses")
         plt.savefig("training_loss_{}.png".format(epochs))
 
-        plt.figure(figsize(14,10))
+        plt.figure(figsize=(14,10))
         plt.plot(self.acc_history)
         plt.title("The history of training accuracy")
         plt.savefig("training_accuracy_{}.png".format(epochs))
@@ -259,3 +259,44 @@ class MoleculeTransformerTrainer():
         if mol_str_list[-1] == '$':
             mol_str_list[-1] = '&'
         return mol_str_list
+
+    @staticmethod
+    def tokenize_train_new(mol_str):
+        """
+        Experimental tokenize function for training sets.
+        1. Two letters organics are going to be a single token.
+            e.g) Br, Cl
+        2. Chemical with brackets are going to be a single token.
+            e.g) [NH4+]
+
+        return: tokenized list
+        """
+        tokens = []
+        long_chr = False
+        mol_str = mol_str.rstrip()
+        current_str = ''
+
+        i = 0
+        while i < len(mol_str):
+            if mol_str[i] == '[':
+                long_chr = True
+            elif mol_str[i] == ']':
+                long_chr = False
+            else:
+                current_str += mol_str[i]
+
+            if mol_str[i] == 'B': # B could be Br.
+                if i+1 < len(mol_str) and mol_str[i+1] == 'r':
+                    current_str += mol_str[i+1]
+                    i += 1
+
+            if mol_str[i] == 'C': # C could be Cl.
+                if i+1 < len(mol_str) and mol_str[i+1] == 'l':
+                    current_str += mol_str[i+1]
+                    i += 1
+
+            if not long_chr:
+                tokens.append(current_str)
+                current_str = ''
+            i += 1
+        return tokens

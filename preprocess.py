@@ -3,7 +3,9 @@ import torch.nn
 import torchtext
 import random
 import re
+from molecule_transformer_trainer import MoleculeTransformerTrainer
 from torchtext.data.utils import get_tokenizer
+
 import argparse
 
 parser = argparse.ArgumentParser(description="Molecule transformer training")
@@ -22,7 +24,8 @@ def valid_SMILES(mol_str):
 smile_mol_tokenizer = torchtext.data.Field(init_token='<BEGIN>',
                                           pad_token='<PAD>',
                                           fix_length=True,
-                                          tokenize=list,
+                                          #tokenize=list,
+                                          tokenize=MoleculeTransformerTrainer.tokenize_train_new,
                                           eos_token='<END>')
 
 smile_data = torchtext.data.TabularDataset(path=input_file,
@@ -31,7 +34,6 @@ smile_data = torchtext.data.TabularDataset(path=input_file,
 
 train_data, test_data = smile_data.split(split_ratio=0.7)
 smile_mol_tokenizer.build_vocab(smile_data)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 possible_tokens = smile_mol_tokenizer.vocab.itos[4:]
 input_data = open(input_file, 'r')
