@@ -1,0 +1,937 @@
+Generate tokenizers. . . .
+Generate dataloaders. . . .
+Data loading finished : 1945.81sec
+Model parameters::
+decoder_bias 	 torch.Size([73])
+pos_encoder.weight 	 torch.Size([100, 128])
+encoder.weight 	 torch.Size([73, 128])
+layer_norm.weight 	 torch.Size([128])
+layer_norm.bias 	 torch.Size([128])
+output_layer_norm.weight 	 torch.Size([73])
+output_layer_norm.bias 	 torch.Size([73])
+input_layer_norm.weight 	 torch.Size([128])
+input_layer_norm.bias 	 torch.Size([128])
+transformer_encoder.layers.0.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.0.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.0.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.0.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.0.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.0.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.0.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.0.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.0.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.0.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.0.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.0.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.1.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.1.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.1.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.1.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.1.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.1.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.1.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.1.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.1.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.1.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.1.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.1.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.2.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.2.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.2.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.2.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.2.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.2.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.2.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.2.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.2.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.2.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.2.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.2.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.3.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.3.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.3.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.3.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.3.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.3.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.3.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.3.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.3.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.3.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.3.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.3.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.4.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.4.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.4.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.4.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.4.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.4.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.4.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.4.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.4.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.4.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.4.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.4.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.5.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.5.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.5.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.5.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.5.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.5.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.5.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.5.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.5.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.5.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.5.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.5.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.6.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.6.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.6.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.6.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.6.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.6.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.6.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.6.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.6.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.6.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.6.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.6.norm2.bias 	 torch.Size([128])
+transformer_encoder.layers.7.self_attn.in_proj_weight 	 torch.Size([384, 128])
+transformer_encoder.layers.7.self_attn.in_proj_bias 	 torch.Size([384])
+transformer_encoder.layers.7.self_attn.out_proj.weight 	 torch.Size([128, 128])
+transformer_encoder.layers.7.self_attn.out_proj.bias 	 torch.Size([128])
+transformer_encoder.layers.7.linear1.weight 	 torch.Size([512, 128])
+transformer_encoder.layers.7.linear1.bias 	 torch.Size([512])
+transformer_encoder.layers.7.linear2.weight 	 torch.Size([128, 512])
+transformer_encoder.layers.7.linear2.bias 	 torch.Size([128])
+transformer_encoder.layers.7.norm1.weight 	 torch.Size([128])
+transformer_encoder.layers.7.norm1.bias 	 torch.Size([128])
+transformer_encoder.layers.7.norm2.weight 	 torch.Size([128])
+transformer_encoder.layers.7.norm2.bias 	 torch.Size([128])
+transformer_encoder.norm.weight 	 torch.Size([128])
+transformer_encoder.norm.bias 	 torch.Size([128])
+decoder.weight 	 torch.Size([73, 128])
+Training processes . . . .
+   200/164028 batches | lr 0.0001000000 | ms/batch 1065.63 | loss 5.61941194 | acc 0.0423
+   400/164028 batches | lr 0.0001000000 | ms/batch 129.25 | loss 3.98780254 | acc 0.0445
+   600/164028 batches | lr 0.0001000000 | ms/batch 128.88 | loss 3.57456371 | acc 0.0768
+   800/164028 batches | lr 0.0001000000 | ms/batch 129.11 | loss 3.20341165 | acc 0.1206
+  1000/164028 batches | lr 0.0001000000 | ms/batch 129.06 | loss 2.96414669 | acc 0.1385
+  1200/164028 batches | lr 0.0001000000 | ms/batch 129.26 | loss 2.79954286 | acc 0.1434
+  1400/164028 batches | lr 0.0001000000 | ms/batch 129.11 | loss 2.68093644 | acc 0.1598
+  1600/164028 batches | lr 0.0001000000 | ms/batch 129.26 | loss 2.59257712 | acc 0.1736
+  1800/164028 batches | lr 0.0001000000 | ms/batch 129.31 | loss 2.52939283 | acc 0.1688
+  2000/164028 batches | lr 0.0001000000 | ms/batch 129.50 | loss 2.46813992 | acc 0.1694
+  2200/164028 batches | lr 0.0001000000 | ms/batch 129.26 | loss 2.43943238 | acc 0.1905
+  2400/164028 batches | lr 0.0001000000 | ms/batch 129.28 | loss 2.36410679 | acc 0.1868
+  2600/164028 batches | lr 0.0001000000 | ms/batch 129.40 | loss 2.32076898 | acc 0.1842
+  2800/164028 batches | lr 0.0001000000 | ms/batch 129.66 | loss 2.29571792 | acc 0.1925
+  3000/164028 batches | lr 0.0001000000 | ms/batch 129.35 | loss 2.24850817 | acc 0.1892
+  3200/164028 batches | lr 0.0001000000 | ms/batch 129.36 | loss 2.23715059 | acc 0.2058
+  3400/164028 batches | lr 0.0001000000 | ms/batch 129.48 | loss 2.21251025 | acc 0.2057
+  3600/164028 batches | lr 0.0001000000 | ms/batch 129.54 | loss 2.16998613 | acc 0.2061
+  3800/164028 batches | lr 0.0001000000 | ms/batch 129.37 | loss 2.16086276 | acc 0.2153
+  4000/164028 batches | lr 0.0001000000 | ms/batch 129.40 | loss 2.12297961 | acc 0.2045
+  4200/164028 batches | lr 0.0001000000 | ms/batch 129.44 | loss 2.10466463 | acc 0.2317
+  4400/164028 batches | lr 0.0001000000 | ms/batch 129.59 | loss 2.07864682 | acc 0.2048
+  4600/164028 batches | lr 0.0001000000 | ms/batch 129.41 | loss 2.05744560 | acc 0.2096
+  4800/164028 batches | lr 0.0001000000 | ms/batch 129.33 | loss 2.02325166 | acc 0.2229
+  5000/164028 batches | lr 0.0001000000 | ms/batch 129.41 | loss 1.98791796 | acc 0.2272
+  5200/164028 batches | lr 0.0001000000 | ms/batch 129.59 | loss 1.96133041 | acc 0.2280
+  5400/164028 batches | lr 0.0001000000 | ms/batch 129.47 | loss 1.91691042 | acc 0.2224
+  5600/164028 batches | lr 0.0001000000 | ms/batch 129.38 | loss 1.89903429 | acc 0.2414
+  5800/164028 batches | lr 0.0001000000 | ms/batch 129.58 | loss 1.88267744 | acc 0.2373
+  6000/164028 batches | lr 0.0001000000 | ms/batch 129.51 | loss 1.86087429 | acc 0.2232
+  6200/164028 batches | lr 0.0001000000 | ms/batch 129.56 | loss 1.82241174 | acc 0.2444
+  6400/164028 batches | lr 0.0001000000 | ms/batch 129.39 | loss 1.81634105 | acc 0.2521
+  6600/164028 batches | lr 0.0001000000 | ms/batch 129.51 | loss 1.78284902 | acc 0.2547
+  6800/164028 batches | lr 0.0001000000 | ms/batch 129.59 | loss 1.76291559 | acc 0.2492
+  7000/164028 batches | lr 0.0001000000 | ms/batch 129.60 | loss 1.73897505 | acc 0.2615
+  7200/164028 batches | lr 0.0001000000 | ms/batch 129.31 | loss 1.72794369 | acc 0.2731
+  7400/164028 batches | lr 0.0001000000 | ms/batch 129.58 | loss 1.69387024 | acc 0.2506
+  7600/164028 batches | lr 0.0001000000 | ms/batch 129.59 | loss 1.68911212 | acc 0.2662
+  7800/164028 batches | lr 0.0001000000 | ms/batch 129.52 | loss 1.65807346 | acc 0.2907
+  8000/164028 batches | lr 0.0001000000 | ms/batch 129.27 | loss 1.65614684 | acc 0.2709
+  8200/164028 batches | lr 0.0001000000 | ms/batch 129.51 | loss 1.63344052 | acc 0.2796
+  8400/164028 batches | lr 0.0001000000 | ms/batch 129.54 | loss 1.61436373 | acc 0.2939
+  8600/164028 batches | lr 0.0001000000 | ms/batch 129.56 | loss 1.59487484 | acc 0.2974
+  8800/164028 batches | lr 0.0001000000 | ms/batch 129.29 | loss 1.57567913 | acc 0.3045
+  9000/164028 batches | lr 0.0001000000 | ms/batch 129.30 | loss 1.57082328 | acc 0.3162
+  9200/164028 batches | lr 0.0001000000 | ms/batch 129.38 | loss 1.54183593 | acc 0.2857
+  9400/164028 batches | lr 0.0001000000 | ms/batch 129.41 | loss 1.52843274 | acc 0.3100
+  9600/164028 batches | lr 0.0001000000 | ms/batch 129.08 | loss 1.52784146 | acc 0.3000
+  9800/164028 batches | lr 0.0001000000 | ms/batch 129.38 | loss 1.49820739 | acc 0.3019
+ 10000/164028 batches | lr 0.0001000000 | ms/batch 129.34 | loss 1.48893916 | acc 0.3134
+ 10200/164028 batches | lr 0.0000990000 | ms/batch 129.27 | loss 1.46957696 | acc 0.3046
+ 10400/164028 batches | lr 0.0000990000 | ms/batch 129.05 | loss 1.45694445 | acc 0.3242
+ 10600/164028 batches | lr 0.0000990000 | ms/batch 129.28 | loss 1.43974512 | acc 0.3438
+ 10800/164028 batches | lr 0.0000990000 | ms/batch 129.30 | loss 1.42461724 | acc 0.3375
+ 11000/164028 batches | lr 0.0000990000 | ms/batch 129.39 | loss 1.39538597 | acc 0.3395
+ 11200/164028 batches | lr 0.0000990000 | ms/batch 129.13 | loss 1.39487381 | acc 0.3775
+ 11400/164028 batches | lr 0.0000990000 | ms/batch 129.16 | loss 1.38502161 | acc 0.3499
+ 11600/164028 batches | lr 0.0000990000 | ms/batch 129.29 | loss 1.36622161 | acc 0.3404
+ 11800/164028 batches | lr 0.0000990000 | ms/batch 129.41 | loss 1.36040279 | acc 0.3790
+ 12000/164028 batches | lr 0.0000990000 | ms/batch 129.05 | loss 1.33552065 | acc 0.3698
+ 12200/164028 batches | lr 0.0000990000 | ms/batch 129.07 | loss 1.33511492 | acc 0.3623
+ 12400/164028 batches | lr 0.0000990000 | ms/batch 129.68 | loss 1.30630936 | acc 0.3823
+ 12600/164028 batches | lr 0.0000990000 | ms/batch 129.51 | loss 1.29144814 | acc 0.3890
+ 12800/164028 batches | lr 0.0000990000 | ms/batch 129.29 | loss 1.29028727 | acc 0.3951
+ 13000/164028 batches | lr 0.0000990000 | ms/batch 129.26 | loss 1.26493057 | acc 0.3578
+ 13200/164028 batches | lr 0.0000990000 | ms/batch 129.48 | loss 1.26479485 | acc 0.3824
+ 13400/164028 batches | lr 0.0000990000 | ms/batch 129.57 | loss 1.25036916 | acc 0.3916
+ 13600/164028 batches | lr 0.0000990000 | ms/batch 129.35 | loss 1.22910943 | acc 0.4219
+ 13800/164028 batches | lr 0.0000990000 | ms/batch 129.19 | loss 1.21831381 | acc 0.4158
+ 14000/164028 batches | lr 0.0000990000 | ms/batch 129.44 | loss 1.20254356 | acc 0.4226
+ 14200/164028 batches | lr 0.0000990000 | ms/batch 129.64 | loss 1.20540584 | acc 0.4113
+ 14400/164028 batches | lr 0.0000990000 | ms/batch 129.44 | loss 1.18140492 | acc 0.4422
+ 14600/164028 batches | lr 0.0000990000 | ms/batch 129.21 | loss 1.15269551 | acc 0.4247
+ 14800/164028 batches | lr 0.0000990000 | ms/batch 129.52 | loss 1.14817727 | acc 0.4417
+ 15000/164028 batches | lr 0.0000990000 | ms/batch 129.49 | loss 1.14637730 | acc 0.4408
+ 15200/164028 batches | lr 0.0000990000 | ms/batch 129.44 | loss 1.12886882 | acc 0.4472
+ 15400/164028 batches | lr 0.0000990000 | ms/batch 129.23 | loss 1.11359252 | acc 0.4595
+ 15600/164028 batches | lr 0.0000990000 | ms/batch 129.42 | loss 1.10476377 | acc 0.4550
+ 15800/164028 batches | lr 0.0000990000 | ms/batch 129.52 | loss 1.08326952 | acc 0.4523
+ 16000/164028 batches | lr 0.0000990000 | ms/batch 129.56 | loss 1.07351540 | acc 0.4541
+ 16200/164028 batches | lr 0.0000990000 | ms/batch 129.09 | loss 1.06044625 | acc 0.4661
+ 16400/164028 batches | lr 0.0000990000 | ms/batch 129.41 | loss 1.04961801 | acc 0.4662
+ 16600/164028 batches | lr 0.0000990000 | ms/batch 129.44 | loss 1.03270035 | acc 0.4906
+ 16800/164028 batches | lr 0.0000990000 | ms/batch 129.46 | loss 1.02476174 | acc 0.4877
+ 17000/164028 batches | lr 0.0000990000 | ms/batch 129.17 | loss 1.01586440 | acc 0.5096
+ 17200/164028 batches | lr 0.0000990000 | ms/batch 129.32 | loss 0.99757619 | acc 0.5236
+ 17400/164028 batches | lr 0.0000990000 | ms/batch 129.28 | loss 0.97725271 | acc 0.5251
+ 17600/164028 batches | lr 0.0000990000 | ms/batch 129.28 | loss 0.96818754 | acc 0.4953
+ 17800/164028 batches | lr 0.0000990000 | ms/batch 129.03 | loss 0.95892953 | acc 0.5094
+ 18000/164028 batches | lr 0.0000990000 | ms/batch 129.15 | loss 0.94387152 | acc 0.5187
+ 18200/164028 batches | lr 0.0000990000 | ms/batch 129.39 | loss 0.93106699 | acc 0.5337
+ 18400/164028 batches | lr 0.0000990000 | ms/batch 129.41 | loss 0.92762164 | acc 0.5240
+ 18600/164028 batches | lr 0.0000990000 | ms/batch 129.01 | loss 0.90402171 | acc 0.5184
+ 18800/164028 batches | lr 0.0000990000 | ms/batch 129.12 | loss 0.90487382 | acc 0.5361
+ 19000/164028 batches | lr 0.0000990000 | ms/batch 129.30 | loss 0.88569516 | acc 0.5313
+ 19200/164028 batches | lr 0.0000990000 | ms/batch 129.31 | loss 0.87634414 | acc 0.5566
+ 19400/164028 batches | lr 0.0000990000 | ms/batch 129.06 | loss 0.86905549 | acc 0.5585
+ 19600/164028 batches | lr 0.0000990000 | ms/batch 129.10 | loss 0.85044769 | acc 0.5729
+ 19800/164028 batches | lr 0.0000990000 | ms/batch 129.29 | loss 0.84568610 | acc 0.5591
+ 20000/164028 batches | lr 0.0000990000 | ms/batch 129.33 | loss 0.83706212 | acc 0.5702
+ 20200/164028 batches | lr 0.0000980100 | ms/batch 129.04 | loss 0.81675737 | acc 0.5632
+ 20400/164028 batches | lr 0.0000980100 | ms/batch 129.08 | loss 0.81838729 | acc 0.5732
+ 20600/164028 batches | lr 0.0000980100 | ms/batch 129.24 | loss 0.81254206 | acc 0.5787
+ 20800/164028 batches | lr 0.0000980100 | ms/batch 129.35 | loss 0.79934695 | acc 0.5941
+ 21000/164028 batches | lr 0.0000980100 | ms/batch 129.10 | loss 0.78854799 | acc 0.5947
+ 21200/164028 batches | lr 0.0000980100 | ms/batch 128.99 | loss 0.77308102 | acc 0.5879
+ 21400/164028 batches | lr 0.0000980100 | ms/batch 129.41 | loss 0.77496622 | acc 0.6018
+ 21600/164028 batches | lr 0.0000980100 | ms/batch 129.29 | loss 0.75755675 | acc 0.6128
+ 21800/164028 batches | lr 0.0000980100 | ms/batch 129.24 | loss 0.75086383 | acc 0.5921
+ 22000/164028 batches | lr 0.0000980100 | ms/batch 129.10 | loss 0.73828548 | acc 0.6143
+ 22200/164028 batches | lr 0.0000980100 | ms/batch 129.32 | loss 0.73368561 | acc 0.6035
+ 22400/164028 batches | lr 0.0000980100 | ms/batch 129.50 | loss 0.73877457 | acc 0.5957
+ 22600/164028 batches | lr 0.0000980100 | ms/batch 129.38 | loss 0.70899763 | acc 0.6184
+ 22800/164028 batches | lr 0.0000980100 | ms/batch 129.03 | loss 0.71049210 | acc 0.6211
+ 23000/164028 batches | lr 0.0000980100 | ms/batch 129.36 | loss 0.70101852 | acc 0.6047
+ 23200/164028 batches | lr 0.0000980100 | ms/batch 129.49 | loss 0.70693831 | acc 0.6173
+ 23400/164028 batches | lr 0.0000980100 | ms/batch 129.41 | loss 0.68457823 | acc 0.6272
+ 23600/164028 batches | lr 0.0000980100 | ms/batch 129.11 | loss 0.68287142 | acc 0.6396
+ 23800/164028 batches | lr 0.0000980100 | ms/batch 129.36 | loss 0.67388537 | acc 0.6356
+ 24000/164028 batches | lr 0.0000980100 | ms/batch 129.48 | loss 0.67448824 | acc 0.6331
+ 24200/164028 batches | lr 0.0000980100 | ms/batch 129.38 | loss 0.67653357 | acc 0.6231
+ 24400/164028 batches | lr 0.0000980100 | ms/batch 129.06 | loss 0.66541295 | acc 0.6423
+ 24600/164028 batches | lr 0.0000980100 | ms/batch 129.27 | loss 0.65484113 | acc 0.6516
+ 24800/164028 batches | lr 0.0000980100 | ms/batch 129.51 | loss 0.64964294 | acc 0.6335
+ 25000/164028 batches | lr 0.0000980100 | ms/batch 129.52 | loss 0.64973417 | acc 0.6382
+ 25200/164028 batches | lr 0.0000980100 | ms/batch 129.11 | loss 0.65588289 | acc 0.6512
+ 25400/164028 batches | lr 0.0000980100 | ms/batch 129.27 | loss 0.63434991 | acc 0.6381
+ 25600/164028 batches | lr 0.0000980100 | ms/batch 129.59 | loss 0.63070319 | acc 0.6439
+ 25800/164028 batches | lr 0.0000980100 | ms/batch 129.55 | loss 0.62222643 | acc 0.6417
+ 26000/164028 batches | lr 0.0000980100 | ms/batch 129.12 | loss 0.62948682 | acc 0.6757
+ 26200/164028 batches | lr 0.0000980100 | ms/batch 129.17 | loss 0.61937052 | acc 0.6622
+ 26400/164028 batches | lr 0.0000980100 | ms/batch 129.41 | loss 0.60911630 | acc 0.6565
+ 26600/164028 batches | lr 0.0000980100 | ms/batch 129.52 | loss 0.60821819 | acc 0.6777
+ 26800/164028 batches | lr 0.0000980100 | ms/batch 129.21 | loss 0.60785286 | acc 0.6768
+ 27000/164028 batches | lr 0.0000980100 | ms/batch 129.08 | loss 0.60376283 | acc 0.6808
+ 27200/164028 batches | lr 0.0000980100 | ms/batch 129.44 | loss 0.59360903 | acc 0.6545
+ 27400/164028 batches | lr 0.0000980100 | ms/batch 129.59 | loss 0.59410704 | acc 0.6694
+ 27600/164028 batches | lr 0.0000980100 | ms/batch 129.18 | loss 0.57618734 | acc 0.6535
+ 27800/164028 batches | lr 0.0000980100 | ms/batch 129.17 | loss 0.59579450 | acc 0.6797
+ 28000/164028 batches | lr 0.0000980100 | ms/batch 129.57 | loss 0.57058697 | acc 0.6731
+ 28200/164028 batches | lr 0.0000980100 | ms/batch 129.44 | loss 0.57803500 | acc 0.6712
+ 28400/164028 batches | lr 0.0000980100 | ms/batch 129.20 | loss 0.57662213 | acc 0.6513
+ 28600/164028 batches | lr 0.0000980100 | ms/batch 129.00 | loss 0.57519515 | acc 0.6859
+ 28800/164028 batches | lr 0.0000980100 | ms/batch 129.15 | loss 0.56406853 | acc 0.6747
+ 29000/164028 batches | lr 0.0000980100 | ms/batch 129.36 | loss 0.56073229 | acc 0.6921
+ 29200/164028 batches | lr 0.0000980100 | ms/batch 129.13 | loss 0.56920953 | acc 0.6901
+ 29400/164028 batches | lr 0.0000980100 | ms/batch 128.96 | loss 0.56630445 | acc 0.6809
+ 29600/164028 batches | lr 0.0000980100 | ms/batch 129.28 | loss 0.56326076 | acc 0.6927
+ 29800/164028 batches | lr 0.0000980100 | ms/batch 129.55 | loss 0.55377888 | acc 0.6894
+ 30000/164028 batches | lr 0.0000980100 | ms/batch 129.19 | loss 0.53395122 | acc 0.6929
+ 30200/164028 batches | lr 0.0000970299 | ms/batch 129.19 | loss 0.55113051 | acc 0.6884
+ 30400/164028 batches | lr 0.0000970299 | ms/batch 129.33 | loss 0.54391506 | acc 0.6981
+ 30600/164028 batches | lr 0.0000970299 | ms/batch 129.42 | loss 0.53253727 | acc 0.7081
+ 30800/164028 batches | lr 0.0000970299 | ms/batch 129.31 | loss 0.53681255 | acc 0.6954
+ 31000/164028 batches | lr 0.0000970299 | ms/batch 129.12 | loss 0.52985623 | acc 0.7089
+ 31200/164028 batches | lr 0.0000970299 | ms/batch 129.16 | loss 0.53024613 | acc 0.7096
+ 31400/164028 batches | lr 0.0000970299 | ms/batch 129.31 | loss 0.52022323 | acc 0.7156
+ 31600/164028 batches | lr 0.0000970299 | ms/batch 129.47 | loss 0.51627350 | acc 0.7084
+ 31800/164028 batches | lr 0.0000970299 | ms/batch 129.16 | loss 0.52154354 | acc 0.7051
+ 32000/164028 batches | lr 0.0000970299 | ms/batch 129.20 | loss 0.51885359 | acc 0.7132
+ 32200/164028 batches | lr 0.0000970299 | ms/batch 129.45 | loss 0.50948914 | acc 0.7111
+ 32400/164028 batches | lr 0.0000970299 | ms/batch 129.26 | loss 0.50837060 | acc 0.7120
+ 32600/164028 batches | lr 0.0000970299 | ms/batch 129.14 | loss 0.50931592 | acc 0.7185
+ 32800/164028 batches | lr 0.0000970299 | ms/batch 129.21 | loss 0.50582682 | acc 0.7469
+ 33000/164028 batches | lr 0.0000970299 | ms/batch 129.30 | loss 0.51104365 | acc 0.7160
+ 33200/164028 batches | lr 0.0000970299 | ms/batch 129.46 | loss 0.50940921 | acc 0.6853
+ 33400/164028 batches | lr 0.0000970299 | ms/batch 129.21 | loss 0.49657062 | acc 0.7231
+ 33600/164028 batches | lr 0.0000970299 | ms/batch 129.10 | loss 0.49853246 | acc 0.7108
+ 33800/164028 batches | lr 0.0000970299 | ms/batch 129.40 | loss 0.49542607 | acc 0.7348
+ 34000/164028 batches | lr 0.0000970299 | ms/batch 129.47 | loss 0.49778754 | acc 0.7461
+ 34200/164028 batches | lr 0.0000970299 | ms/batch 129.07 | loss 0.48087832 | acc 0.7284
+ 34400/164028 batches | lr 0.0000970299 | ms/batch 128.96 | loss 0.49113843 | acc 0.7148
+ 34600/164028 batches | lr 0.0000970299 | ms/batch 129.45 | loss 0.48726002 | acc 0.7257
+ 34800/164028 batches | lr 0.0000970299 | ms/batch 129.45 | loss 0.48218177 | acc 0.7207
+ 35000/164028 batches | lr 0.0000970299 | ms/batch 129.14 | loss 0.47703412 | acc 0.7275
+ 35200/164028 batches | lr 0.0000970299 | ms/batch 129.07 | loss 0.48511697 | acc 0.7410
+ 35400/164028 batches | lr 0.0000970299 | ms/batch 129.29 | loss 0.47716948 | acc 0.7124
+ 35600/164028 batches | lr 0.0000970299 | ms/batch 129.50 | loss 0.49088584 | acc 0.7316
+ 35800/164028 batches | lr 0.0000970299 | ms/batch 129.23 | loss 0.47865149 | acc 0.7219
+ 36000/164028 batches | lr 0.0000970299 | ms/batch 129.98 | loss 0.48071274 | acc 0.7122
+ 36200/164028 batches | lr 0.0000970299 | ms/batch 129.24 | loss 0.47443920 | acc 0.7210
+ 36400/164028 batches | lr 0.0000970299 | ms/batch 129.52 | loss 0.46554695 | acc 0.7385
+ 36600/164028 batches | lr 0.0000970299 | ms/batch 129.19 | loss 0.46857265 | acc 0.7288
+ 36800/164028 batches | lr 0.0000970299 | ms/batch 128.97 | loss 0.45871446 | acc 0.7440
+ 37000/164028 batches | lr 0.0000970299 | ms/batch 129.22 | loss 0.46166023 | acc 0.7439
+ 37200/164028 batches | lr 0.0000970299 | ms/batch 129.10 | loss 0.45834005 | acc 0.7215
+ 37400/164028 batches | lr 0.0000970299 | ms/batch 131.89 | loss 0.45517355 | acc 0.7615
+ 37600/164028 batches | lr 0.0000970299 | ms/batch 230.55 | loss 0.45774853 | acc 0.7507
+ 37800/164028 batches | lr 0.0000970299 | ms/batch 235.36 | loss 0.45922439 | acc 0.7209
+ 38000/164028 batches | lr 0.0000970299 | ms/batch 235.39 | loss 0.44874767 | acc 0.7466
+ 38200/164028 batches | lr 0.0000970299 | ms/batch 235.65 | loss 0.46528854 | acc 0.7315
+ 38400/164028 batches | lr 0.0000970299 | ms/batch 235.46 | loss 0.44749503 | acc 0.7467
+ 38600/164028 batches | lr 0.0000970299 | ms/batch 235.30 | loss 0.45290849 | acc 0.7454
+ 38800/164028 batches | lr 0.0000970299 | ms/batch 235.55 | loss 0.45515564 | acc 0.7578
+ 39000/164028 batches | lr 0.0000970299 | ms/batch 235.40 | loss 0.45284737 | acc 0.7555
+ 39200/164028 batches | lr 0.0000970299 | ms/batch 235.46 | loss 0.45021207 | acc 0.7298
+ 39400/164028 batches | lr 0.0000970299 | ms/batch 235.53 | loss 0.43880061 | acc 0.7345
+ 39600/164028 batches | lr 0.0000970299 | ms/batch 235.45 | loss 0.44493339 | acc 0.7390
+ 39800/164028 batches | lr 0.0000970299 | ms/batch 235.81 | loss 0.44069125 | acc 0.7470
+ 40000/164028 batches | lr 0.0000970299 | ms/batch 235.41 | loss 0.43923407 | acc 0.7493
+ 40200/164028 batches | lr 0.0000960596 | ms/batch 235.63 | loss 0.42607420 | acc 0.7593
+ 40400/164028 batches | lr 0.0000960596 | ms/batch 235.35 | loss 0.44018713 | acc 0.7457
+ 40600/164028 batches | lr 0.0000960596 | ms/batch 236.02 | loss 0.44016690 | acc 0.7425
+ 40800/164028 batches | lr 0.0000960596 | ms/batch 235.44 | loss 0.43115326 | acc 0.7570
+ 41000/164028 batches | lr 0.0000960596 | ms/batch 235.59 | loss 0.42931068 | acc 0.7308
+ 41200/164028 batches | lr 0.0000960596 | ms/batch 235.51 | loss 0.42689354 | acc 0.7513
+ 41400/164028 batches | lr 0.0000960596 | ms/batch 235.85 | loss 0.42383656 | acc 0.7456
+ 41600/164028 batches | lr 0.0000960596 | ms/batch 235.47 | loss 0.42940502 | acc 0.7576
+ 41800/164028 batches | lr 0.0000960596 | ms/batch 235.61 | loss 0.42875144 | acc 0.7652
+ 42000/164028 batches | lr 0.0000960596 | ms/batch 235.48 | loss 0.42138059 | acc 0.7594
+ 42200/164028 batches | lr 0.0000960596 | ms/batch 235.42 | loss 0.41296508 | acc 0.7648
+ 42400/164028 batches | lr 0.0000960596 | ms/batch 235.56 | loss 0.42693656 | acc 0.7659
+ 42600/164028 batches | lr 0.0000960596 | ms/batch 235.40 | loss 0.41725148 | acc 0.7466
+ 42800/164028 batches | lr 0.0000960596 | ms/batch 235.54 | loss 0.42818176 | acc 0.7401
+ 43000/164028 batches | lr 0.0000960596 | ms/batch 235.60 | loss 0.41903232 | acc 0.7479
+ 43200/164028 batches | lr 0.0000960596 | ms/batch 235.57 | loss 0.41489906 | acc 0.7667
+ 43400/164028 batches | lr 0.0000960596 | ms/batch 235.54 | loss 0.42138022 | acc 0.7675
+ 43600/164028 batches | lr 0.0000960596 | ms/batch 235.87 | loss 0.41089782 | acc 0.7544
+ 43800/164028 batches | lr 0.0000960596 | ms/batch 235.48 | loss 0.41164210 | acc 0.7749
+ 44000/164028 batches | lr 0.0000960596 | ms/batch 235.59 | loss 0.41630223 | acc 0.7745
+ 44200/164028 batches | lr 0.0000960596 | ms/batch 235.55 | loss 0.40653725 | acc 0.7539
+ 44400/164028 batches | lr 0.0000960596 | ms/batch 235.67 | loss 0.40835238 | acc 0.7654
+ 44600/164028 batches | lr 0.0000960596 | ms/batch 235.48 | loss 0.41120015 | acc 0.7574
+ 44800/164028 batches | lr 0.0000960596 | ms/batch 235.60 | loss 0.40669419 | acc 0.7564
+ 45000/164028 batches | lr 0.0000960596 | ms/batch 235.54 | loss 0.40378116 | acc 0.7699
+ 45200/164028 batches | lr 0.0000960596 | ms/batch 235.76 | loss 0.40108787 | acc 0.7712
+ 45400/164028 batches | lr 0.0000960596 | ms/batch 235.49 | loss 0.41008745 | acc 0.7523
+ 45600/164028 batches | lr 0.0000960596 | ms/batch 235.95 | loss 0.39966686 | acc 0.7691
+ 45800/164028 batches | lr 0.0000960596 | ms/batch 235.61 | loss 0.39816534 | acc 0.7635
+ 46000/164028 batches | lr 0.0000960596 | ms/batch 235.30 | loss 0.39257901 | acc 0.7727
+ 46200/164028 batches | lr 0.0000960596 | ms/batch 235.48 | loss 0.39549861 | acc 0.7817
+ 46400/164028 batches | lr 0.0000960596 | ms/batch 235.60 | loss 0.40490933 | acc 0.7713
+ 46600/164028 batches | lr 0.0000960596 | ms/batch 235.75 | loss 0.39323447 | acc 0.7570
+ 46800/164028 batches | lr 0.0000960596 | ms/batch 235.61 | loss 0.39648442 | acc 0.7641
+ 47000/164028 batches | lr 0.0000960596 | ms/batch 235.64 | loss 0.40043013 | acc 0.7750
+ 47200/164028 batches | lr 0.0000960596 | ms/batch 235.46 | loss 0.39238481 | acc 0.7614
+ 47400/164028 batches | lr 0.0000960596 | ms/batch 235.54 | loss 0.38735433 | acc 0.7734
+ 47600/164028 batches | lr 0.0000960596 | ms/batch 235.61 | loss 0.39151187 | acc 0.7685
+ 47800/164028 batches | lr 0.0000960596 | ms/batch 235.64 | loss 0.39621251 | acc 0.7663
+ 48000/164028 batches | lr 0.0000960596 | ms/batch 235.48 | loss 0.39449911 | acc 0.7784
+ 48200/164028 batches | lr 0.0000960596 | ms/batch 235.61 | loss 0.38291212 | acc 0.7778
+ 48400/164028 batches | lr 0.0000960596 | ms/batch 235.51 | loss 0.39033480 | acc 0.7700
+ 48600/164028 batches | lr 0.0000960596 | ms/batch 235.62 | loss 0.39180430 | acc 0.7805
+ 48800/164028 batches | lr 0.0000960596 | ms/batch 235.51 | loss 0.38609604 | acc 0.7837
+ 49000/164028 batches | lr 0.0000960596 | ms/batch 235.71 | loss 0.39065039 | acc 0.7900
+ 49200/164028 batches | lr 0.0000960596 | ms/batch 235.51 | loss 0.39120989 | acc 0.7902
+ 49400/164028 batches | lr 0.0000960596 | ms/batch 235.50 | loss 0.38659533 | acc 0.7621
+ 49600/164028 batches | lr 0.0000960596 | ms/batch 235.69 | loss 0.38649600 | acc 0.7762
+ 49800/164028 batches | lr 0.0000960596 | ms/batch 235.45 | loss 0.37538758 | acc 0.7790
+ 50000/164028 batches | lr 0.0000960596 | ms/batch 235.59 | loss 0.38326832 | acc 0.7690
+ 50200/164028 batches | lr 0.0000950990 | ms/batch 235.55 | loss 0.37799697 | acc 0.7799
+ 50400/164028 batches | lr 0.0000950990 | ms/batch 235.44 | loss 0.38803178 | acc 0.7833
+ 50600/164028 batches | lr 0.0000950990 | ms/batch 235.58 | loss 0.37987098 | acc 0.7701
+ 50800/164028 batches | lr 0.0000950990 | ms/batch 235.57 | loss 0.37418597 | acc 0.7888
+ 51000/164028 batches | lr 0.0000950990 | ms/batch 235.42 | loss 0.37469169 | acc 0.7793
+ 51200/164028 batches | lr 0.0000950990 | ms/batch 235.69 | loss 0.36479277 | acc 0.8073
+ 51400/164028 batches | lr 0.0000950990 | ms/batch 235.43 | loss 0.37883736 | acc 0.7869
+ 51600/164028 batches | lr 0.0000950990 | ms/batch 235.49 | loss 0.37964672 | acc 0.7783
+ 51800/164028 batches | lr 0.0000950990 | ms/batch 235.44 | loss 0.37330708 | acc 0.8037
+ 52000/164028 batches | lr 0.0000950990 | ms/batch 235.69 | loss 0.38059490 | acc 0.7936
+ 52200/164028 batches | lr 0.0000950990 | ms/batch 235.27 | loss 0.36456840 | acc 0.7724
+ 52400/164028 batches | lr 0.0000950990 | ms/batch 235.51 | loss 0.36851664 | acc 0.7955
+ 52600/164028 batches | lr 0.0000950990 | ms/batch 235.67 | loss 0.36646606 | acc 0.7970
+ 52800/164028 batches | lr 0.0000950990 | ms/batch 235.58 | loss 0.36857790 | acc 0.7765
+ 53000/164028 batches | lr 0.0000950990 | ms/batch 235.70 | loss 0.37398952 | acc 0.7786
+ 53200/164028 batches | lr 0.0000950990 | ms/batch 235.59 | loss 0.36811061 | acc 0.7994
+ 53400/164028 batches | lr 0.0000950990 | ms/batch 235.47 | loss 0.36953644 | acc 0.7828
+ 53600/164028 batches | lr 0.0000950990 | ms/batch 235.50 | loss 0.36359697 | acc 0.7911
+ 53800/164028 batches | lr 0.0000950990 | ms/batch 235.68 | loss 0.36728067 | acc 0.7893
+ 54000/164028 batches | lr 0.0000950990 | ms/batch 235.44 | loss 0.37543793 | acc 0.7823
+ 54200/164028 batches | lr 0.0000950990 | ms/batch 235.33 | loss 0.36629916 | acc 0.8011
+ 54400/164028 batches | lr 0.0000950990 | ms/batch 235.46 | loss 0.36058719 | acc 0.8028
+ 54600/164028 batches | lr 0.0000950990 | ms/batch 235.67 | loss 0.36489036 | acc 0.7925
+ 54800/164028 batches | lr 0.0000950990 | ms/batch 235.45 | loss 0.35746116 | acc 0.7955
+ 55000/164028 batches | lr 0.0000950990 | ms/batch 235.65 | loss 0.36093404 | acc 0.7668
+ 55200/164028 batches | lr 0.0000950990 | ms/batch 235.35 | loss 0.36051476 | acc 0.7764
+ 55400/164028 batches | lr 0.0000950990 | ms/batch 235.58 | loss 0.36272072 | acc 0.7962
+ 55600/164028 batches | lr 0.0000950990 | ms/batch 235.49 | loss 0.36190313 | acc 0.7950
+ 55800/164028 batches | lr 0.0000950990 | ms/batch 235.53 | loss 0.35302816 | acc 0.8011
+ 56000/164028 batches | lr 0.0000950990 | ms/batch 235.55 | loss 0.36588022 | acc 0.7780
+ 56200/164028 batches | lr 0.0000950990 | ms/batch 235.50 | loss 0.35722625 | acc 0.7929
+ 56400/164028 batches | lr 0.0000950990 | ms/batch 235.57 | loss 0.35133803 | acc 0.7973
+ 56600/164028 batches | lr 0.0000950990 | ms/batch 235.28 | loss 0.35457217 | acc 0.8088
+ 56800/164028 batches | lr 0.0000950990 | ms/batch 235.96 | loss 0.35271731 | acc 0.7890
+ 57000/164028 batches | lr 0.0000950990 | ms/batch 235.35 | loss 0.34826783 | acc 0.8061
+ 57200/164028 batches | lr 0.0000950990 | ms/batch 235.63 | loss 0.35542402 | acc 0.7950
+ 57400/164028 batches | lr 0.0000950990 | ms/batch 235.40 | loss 0.35461430 | acc 0.7994
+ 57600/164028 batches | lr 0.0000950990 | ms/batch 235.65 | loss 0.34805867 | acc 0.7958
+ 57800/164028 batches | lr 0.0000950990 | ms/batch 235.38 | loss 0.35549534 | acc 0.7819
+ 58000/164028 batches | lr 0.0000950990 | ms/batch 235.64 | loss 0.35014430 | acc 0.8099
+ 58200/164028 batches | lr 0.0000950990 | ms/batch 235.29 | loss 0.35948997 | acc 0.7935
+ 58400/164028 batches | lr 0.0000950990 | ms/batch 235.43 | loss 0.34911638 | acc 0.7893
+ 58600/164028 batches | lr 0.0000950990 | ms/batch 235.46 | loss 0.34981222 | acc 0.7960
+ 58800/164028 batches | lr 0.0000950990 | ms/batch 235.41 | loss 0.35785770 | acc 0.7971
+ 59000/164028 batches | lr 0.0000950990 | ms/batch 235.61 | loss 0.34202265 | acc 0.8054
+ 59200/164028 batches | lr 0.0000950990 | ms/batch 235.51 | loss 0.35085421 | acc 0.7851
+ 59400/164028 batches | lr 0.0000950990 | ms/batch 235.88 | loss 0.34238429 | acc 0.8206
+ 59600/164028 batches | lr 0.0000950990 | ms/batch 235.42 | loss 0.34416098 | acc 0.7864
+ 59800/164028 batches | lr 0.0000950990 | ms/batch 236.05 | loss 0.33993569 | acc 0.7954
+ 60000/164028 batches | lr 0.0000950990 | ms/batch 235.41 | loss 0.35175021 | acc 0.7959
+ 60200/164028 batches | lr 0.0000941480 | ms/batch 235.56 | loss 0.34860708 | acc 0.7945
+ 60400/164028 batches | lr 0.0000941480 | ms/batch 235.67 | loss 0.34394908 | acc 0.7972
+ 60600/164028 batches | lr 0.0000941480 | ms/batch 235.47 | loss 0.34431711 | acc 0.7834
+ 60800/164028 batches | lr 0.0000941480 | ms/batch 235.56 | loss 0.33919651 | acc 0.8087
+ 61000/164028 batches | lr 0.0000941480 | ms/batch 235.44 | loss 0.33789208 | acc 0.8023
+ 61200/164028 batches | lr 0.0000941480 | ms/batch 235.70 | loss 0.33156410 | acc 0.8104
+ 61400/164028 batches | lr 0.0000941480 | ms/batch 235.37 | loss 0.33938705 | acc 0.8006
+ 61600/164028 batches | lr 0.0000941480 | ms/batch 235.70 | loss 0.34183470 | acc 0.7965
+ 61800/164028 batches | lr 0.0000941480 | ms/batch 235.47 | loss 0.34992410 | acc 0.8230
+ 62000/164028 batches | lr 0.0000941480 | ms/batch 235.59 | loss 0.34381891 | acc 0.8076
+ 62200/164028 batches | lr 0.0000941480 | ms/batch 235.59 | loss 0.34004256 | acc 0.8046
+ 62400/164028 batches | lr 0.0000941480 | ms/batch 235.72 | loss 0.34284294 | acc 0.8040
+ 62600/164028 batches | lr 0.0000941480 | ms/batch 235.54 | loss 0.33556674 | acc 0.7864
+ 62800/164028 batches | lr 0.0000941480 | ms/batch 235.68 | loss 0.33924862 | acc 0.8051
+ 63000/164028 batches | lr 0.0000941480 | ms/batch 235.51 | loss 0.33703706 | acc 0.8107
+ 63200/164028 batches | lr 0.0000941480 | ms/batch 235.49 | loss 0.33600077 | acc 0.7908
+ 63400/164028 batches | lr 0.0000941480 | ms/batch 235.92 | loss 0.33637237 | acc 0.8064
+ 63600/164028 batches | lr 0.0000941480 | ms/batch 235.42 | loss 0.33041510 | acc 0.8000
+ 63800/164028 batches | lr 0.0000941480 | ms/batch 235.74 | loss 0.33569617 | acc 0.8165
+ 64000/164028 batches | lr 0.0000941480 | ms/batch 235.53 | loss 0.32966943 | acc 0.8094
+ 64200/164028 batches | lr 0.0000941480 | ms/batch 235.55 | loss 0.33462689 | acc 0.7997
+ 64400/164028 batches | lr 0.0000941480 | ms/batch 235.40 | loss 0.33642101 | acc 0.8090
+ 64600/164028 batches | lr 0.0000941480 | ms/batch 235.56 | loss 0.33633095 | acc 0.8120
+ 64800/164028 batches | lr 0.0000941480 | ms/batch 235.62 | loss 0.33613212 | acc 0.8064
+ 65000/164028 batches | lr 0.0000941480 | ms/batch 235.52 | loss 0.32814186 | acc 0.7848
+ 65200/164028 batches | lr 0.0000941480 | ms/batch 235.71 | loss 0.33551027 | acc 0.8050
+ 65400/164028 batches | lr 0.0000941480 | ms/batch 235.59 | loss 0.33280802 | acc 0.8155
+ 65600/164028 batches | lr 0.0000941480 | ms/batch 235.70 | loss 0.32683573 | acc 0.8056
+ 65800/164028 batches | lr 0.0000941480 | ms/batch 235.56 | loss 0.32668048 | acc 0.7953
+ 66000/164028 batches | lr 0.0000941480 | ms/batch 235.58 | loss 0.32694200 | acc 0.8168
+ 66200/164028 batches | lr 0.0000941480 | ms/batch 235.69 | loss 0.32630339 | acc 0.8033
+ 66400/164028 batches | lr 0.0000941480 | ms/batch 235.76 | loss 0.33141281 | acc 0.8035
+ 66600/164028 batches | lr 0.0000941480 | ms/batch 235.62 | loss 0.32466730 | acc 0.8208
+ 66800/164028 batches | lr 0.0000941480 | ms/batch 235.58 | loss 0.32377193 | acc 0.8079
+ 67000/164028 batches | lr 0.0000941480 | ms/batch 235.70 | loss 0.33048198 | acc 0.8132
+ 67200/164028 batches | lr 0.0000941480 | ms/batch 235.57 | loss 0.32738843 | acc 0.8006
+ 67400/164028 batches | lr 0.0000941480 | ms/batch 235.74 | loss 0.32802103 | acc 0.8150
+ 67600/164028 batches | lr 0.0000941480 | ms/batch 235.60 | loss 0.33200360 | acc 0.8131
+ 67800/164028 batches | lr 0.0000941480 | ms/batch 235.65 | loss 0.33291404 | acc 0.8029
+ 68000/164028 batches | lr 0.0000941480 | ms/batch 235.39 | loss 0.32496038 | acc 0.8018
+ 68200/164028 batches | lr 0.0000941480 | ms/batch 235.66 | loss 0.32043971 | acc 0.8208
+ 68400/164028 batches | lr 0.0000941480 | ms/batch 235.68 | loss 0.32987630 | acc 0.8164
+ 68600/164028 batches | lr 0.0000941480 | ms/batch 235.55 | loss 0.31869951 | acc 0.8133
+ 68800/164028 batches | lr 0.0000941480 | ms/batch 235.55 | loss 0.32529321 | acc 0.8058
+ 69000/164028 batches | lr 0.0000941480 | ms/batch 235.63 | loss 0.31636800 | acc 0.8403
+ 69200/164028 batches | lr 0.0000941480 | ms/batch 235.60 | loss 0.31795402 | acc 0.8209
+ 69400/164028 batches | lr 0.0000941480 | ms/batch 235.43 | loss 0.32187246 | acc 0.8047
+ 69600/164028 batches | lr 0.0000941480 | ms/batch 235.60 | loss 0.32344540 | acc 0.8159
+ 69800/164028 batches | lr 0.0000941480 | ms/batch 235.39 | loss 0.32437977 | acc 0.8184
+ 70000/164028 batches | lr 0.0000941480 | ms/batch 235.71 | loss 0.32206375 | acc 0.8103
+ 70200/164028 batches | lr 0.0000932065 | ms/batch 235.65 | loss 0.32292122 | acc 0.8147
+ 70400/164028 batches | lr 0.0000932065 | ms/batch 235.52 | loss 0.31663987 | acc 0.8045
+ 70600/164028 batches | lr 0.0000932065 | ms/batch 235.53 | loss 0.31882095 | acc 0.8223
+ 70800/164028 batches | lr 0.0000932065 | ms/batch 235.53 | loss 0.31449931 | acc 0.8239
+ 71000/164028 batches | lr 0.0000932065 | ms/batch 235.45 | loss 0.31615964 | acc 0.8138
+ 71200/164028 batches | lr 0.0000932065 | ms/batch 235.60 | loss 0.32156438 | acc 0.8213
+ 71400/164028 batches | lr 0.0000932065 | ms/batch 235.56 | loss 0.31987070 | acc 0.8203
+ 71600/164028 batches | lr 0.0000932065 | ms/batch 235.40 | loss 0.31228992 | acc 0.8014
+ 71800/164028 batches | lr 0.0000932065 | ms/batch 236.04 | loss 0.32037685 | acc 0.8045
+ 72000/164028 batches | lr 0.0000932065 | ms/batch 235.50 | loss 0.32217444 | acc 0.8029
+ 72200/164028 batches | lr 0.0000932065 | ms/batch 235.82 | loss 0.31661441 | acc 0.8068
+ 72400/164028 batches | lr 0.0000932065 | ms/batch 235.67 | loss 0.31562158 | acc 0.8111
+ 72600/164028 batches | lr 0.0000932065 | ms/batch 235.63 | loss 0.31967340 | acc 0.8170
+ 72800/164028 batches | lr 0.0000932065 | ms/batch 235.48 | loss 0.32013611 | acc 0.8035
+ 73000/164028 batches | lr 0.0000932065 | ms/batch 235.80 | loss 0.31926750 | acc 0.8264
+ 73200/164028 batches | lr 0.0000932065 | ms/batch 235.47 | loss 0.31902698 | acc 0.8062
+ 73400/164028 batches | lr 0.0000932065 | ms/batch 235.76 | loss 0.31245548 | acc 0.8153
+ 73600/164028 batches | lr 0.0000932065 | ms/batch 235.50 | loss 0.31095819 | acc 0.8104
+ 73800/164028 batches | lr 0.0000932065 | ms/batch 235.46 | loss 0.30579809 | acc 0.8116
+ 74000/164028 batches | lr 0.0000932065 | ms/batch 235.72 | loss 0.30621580 | acc 0.8211
+ 74200/164028 batches | lr 0.0000932065 | ms/batch 235.49 | loss 0.31024497 | acc 0.8139
+ 74400/164028 batches | lr 0.0000932065 | ms/batch 235.58 | loss 0.30913654 | acc 0.8235
+ 74600/164028 batches | lr 0.0000932065 | ms/batch 235.45 | loss 0.30818717 | acc 0.8112
+ 74800/164028 batches | lr 0.0000932065 | ms/batch 235.84 | loss 0.31125910 | acc 0.8197
+ 75000/164028 batches | lr 0.0000932065 | ms/batch 235.40 | loss 0.31013586 | acc 0.8187
+ 75200/164028 batches | lr 0.0000932065 | ms/batch 235.72 | loss 0.31349439 | acc 0.8078
+ 75400/164028 batches | lr 0.0000932065 | ms/batch 235.38 | loss 0.32101179 | acc 0.8313
+ 75600/164028 batches | lr 0.0000932065 | ms/batch 235.76 | loss 0.30617947 | acc 0.8350
+ 75800/164028 batches | lr 0.0000932065 | ms/batch 235.55 | loss 0.30275990 | acc 0.8336
+ 76000/164028 batches | lr 0.0000932065 | ms/batch 235.62 | loss 0.31150315 | acc 0.8031
+ 76200/164028 batches | lr 0.0000932065 | ms/batch 235.58 | loss 0.31539439 | acc 0.8228
+ 76400/164028 batches | lr 0.0000932065 | ms/batch 235.43 | loss 0.30275942 | acc 0.8173
+ 76600/164028 batches | lr 0.0000932065 | ms/batch 235.78 | loss 0.31401616 | acc 0.8135
+ 76800/164028 batches | lr 0.0000932065 | ms/batch 235.39 | loss 0.30658433 | acc 0.8186
+ 77000/164028 batches | lr 0.0000932065 | ms/batch 235.84 | loss 0.30202181 | acc 0.8286
+ 77200/164028 batches | lr 0.0000932065 | ms/batch 235.38 | loss 0.30160056 | acc 0.8126
+ 77400/164028 batches | lr 0.0000932065 | ms/batch 236.10 | loss 0.31451288 | acc 0.8359
+ 77600/164028 batches | lr 0.0000932065 | ms/batch 235.37 | loss 0.30298427 | acc 0.8201
+ 77800/164028 batches | lr 0.0000932065 | ms/batch 235.86 | loss 0.30378070 | acc 0.8254
+ 78000/164028 batches | lr 0.0000932065 | ms/batch 235.42 | loss 0.30318614 | acc 0.8173
+ 78200/164028 batches | lr 0.0000932065 | ms/batch 235.53 | loss 0.30602394 | acc 0.8177
+ 78400/164028 batches | lr 0.0000932065 | ms/batch 235.65 | loss 0.30952710 | acc 0.8226
+ 78600/164028 batches | lr 0.0000932065 | ms/batch 235.43 | loss 0.30735028 | acc 0.8115
+ 78800/164028 batches | lr 0.0000932065 | ms/batch 235.75 | loss 0.31486265 | acc 0.8199
+ 79000/164028 batches | lr 0.0000932065 | ms/batch 235.58 | loss 0.29948943 | acc 0.8241
+ 79200/164028 batches | lr 0.0000932065 | ms/batch 235.74 | loss 0.30312101 | acc 0.8214
+ 79400/164028 batches | lr 0.0000932065 | ms/batch 235.33 | loss 0.30233699 | acc 0.8206
+ 79600/164028 batches | lr 0.0000932065 | ms/batch 235.88 | loss 0.30033875 | acc 0.8181
+ 79800/164028 batches | lr 0.0000932065 | ms/batch 235.48 | loss 0.30731331 | acc 0.8103
+ 80000/164028 batches | lr 0.0000932065 | ms/batch 235.59 | loss 0.29900288 | acc 0.8320
+ 80200/164028 batches | lr 0.0000922745 | ms/batch 235.46 | loss 0.29781151 | acc 0.8296
+ 80400/164028 batches | lr 0.0000922745 | ms/batch 235.73 | loss 0.30138425 | acc 0.8178
+ 80600/164028 batches | lr 0.0000922745 | ms/batch 235.75 | loss 0.30119255 | acc 0.8233
+ 80800/164028 batches | lr 0.0000922745 | ms/batch 235.61 | loss 0.30013551 | acc 0.8129
+ 81000/164028 batches | lr 0.0000922745 | ms/batch 235.64 | loss 0.30191655 | acc 0.8167
+ 81200/164028 batches | lr 0.0000922745 | ms/batch 235.41 | loss 0.30691994 | acc 0.8216
+ 81400/164028 batches | lr 0.0000922745 | ms/batch 235.68 | loss 0.29712137 | acc 0.8249
+ 81600/164028 batches | lr 0.0000922745 | ms/batch 235.38 | loss 0.29561092 | acc 0.8131
+ 81800/164028 batches | lr 0.0000922745 | ms/batch 235.74 | loss 0.29713363 | acc 0.8269
+ 82000/164028 batches | lr 0.0000922745 | ms/batch 235.47 | loss 0.29804320 | acc 0.8151
+ 82200/164028 batches | lr 0.0000922745 | ms/batch 236.00 | loss 0.30040697 | acc 0.8179
+ 82400/164028 batches | lr 0.0000922745 | ms/batch 235.25 | loss 0.29184096 | acc 0.8384
+ 82600/164028 batches | lr 0.0000922745 | ms/batch 235.55 | loss 0.30317929 | acc 0.8123
+ 82800/164028 batches | lr 0.0000922745 | ms/batch 235.60 | loss 0.30793662 | acc 0.8180
+ 83000/164028 batches | lr 0.0000922745 | ms/batch 235.46 | loss 0.29334237 | acc 0.8447
+ 83200/164028 batches | lr 0.0000922745 | ms/batch 235.76 | loss 0.29256655 | acc 0.8140
+ 83400/164028 batches | lr 0.0000922745 | ms/batch 235.39 | loss 0.29885500 | acc 0.8077
+ 83600/164028 batches | lr 0.0000922745 | ms/batch 235.81 | loss 0.29687593 | acc 0.8623
+ 83800/164028 batches | lr 0.0000922745 | ms/batch 235.95 | loss 0.29433407 | acc 0.8304
+ 84000/164028 batches | lr 0.0000922745 | ms/batch 235.89 | loss 0.29816325 | acc 0.8171
+ 84200/164028 batches | lr 0.0000922745 | ms/batch 235.82 | loss 0.29101866 | acc 0.8206
+ 84400/164028 batches | lr 0.0000922745 | ms/batch 235.74 | loss 0.30022901 | acc 0.8272
+ 84600/164028 batches | lr 0.0000922745 | ms/batch 235.84 | loss 0.29445907 | acc 0.8242
+ 84800/164028 batches | lr 0.0000922745 | ms/batch 235.90 | loss 0.29702208 | acc 0.8206
+ 85000/164028 batches | lr 0.0000922745 | ms/batch 235.91 | loss 0.29347462 | acc 0.8324
+ 85200/164028 batches | lr 0.0000922745 | ms/batch 235.97 | loss 0.29991621 | acc 0.8226
+ 85400/164028 batches | lr 0.0000922745 | ms/batch 235.78 | loss 0.29363387 | acc 0.8116
+ 85600/164028 batches | lr 0.0000922745 | ms/batch 235.84 | loss 0.29191246 | acc 0.8287
+ 85800/164028 batches | lr 0.0000922745 | ms/batch 236.05 | loss 0.29619812 | acc 0.8207
+ 86000/164028 batches | lr 0.0000922745 | ms/batch 236.00 | loss 0.28797596 | acc 0.8310
+ 86200/164028 batches | lr 0.0000922745 | ms/batch 236.04 | loss 0.29983660 | acc 0.8416
+ 86400/164028 batches | lr 0.0000922745 | ms/batch 235.80 | loss 0.29509402 | acc 0.8118
+ 86600/164028 batches | lr 0.0000922745 | ms/batch 235.93 | loss 0.30156205 | acc 0.8317
+ 86800/164028 batches | lr 0.0000922745 | ms/batch 236.01 | loss 0.28306689 | acc 0.8181
+ 87000/164028 batches | lr 0.0000922745 | ms/batch 235.92 | loss 0.29421256 | acc 0.8118
+ 87200/164028 batches | lr 0.0000922745 | ms/batch 235.88 | loss 0.29653063 | acc 0.8167
+ 87400/164028 batches | lr 0.0000922745 | ms/batch 235.96 | loss 0.29309008 | acc 0.8304
+ 87600/164028 batches | lr 0.0000922745 | ms/batch 235.90 | loss 0.28741366 | acc 0.8110
+ 87800/164028 batches | lr 0.0000922745 | ms/batch 235.68 | loss 0.29665745 | acc 0.8213
+ 88000/164028 batches | lr 0.0000922745 | ms/batch 235.90 | loss 0.29675413 | acc 0.8355
+ 88200/164028 batches | lr 0.0000922745 | ms/batch 235.94 | loss 0.29216322 | acc 0.8325
+ 88400/164028 batches | lr 0.0000922745 | ms/batch 235.87 | loss 0.29202846 | acc 0.8388
+ 88600/164028 batches | lr 0.0000922745 | ms/batch 235.53 | loss 0.29210513 | acc 0.8229
+ 88800/164028 batches | lr 0.0000922745 | ms/batch 236.04 | loss 0.28646326 | acc 0.8103
+ 89000/164028 batches | lr 0.0000922745 | ms/batch 235.70 | loss 0.28524472 | acc 0.8296
+ 89200/164028 batches | lr 0.0000922745 | ms/batch 236.14 | loss 0.29114557 | acc 0.8379
+ 89400/164028 batches | lr 0.0000922745 | ms/batch 235.91 | loss 0.29655185 | acc 0.8376
+ 89600/164028 batches | lr 0.0000922745 | ms/batch 235.95 | loss 0.28561884 | acc 0.8376
+ 89800/164028 batches | lr 0.0000922745 | ms/batch 236.05 | loss 0.29335491 | acc 0.8261
+ 90000/164028 batches | lr 0.0000922745 | ms/batch 235.90 | loss 0.29127782 | acc 0.8376
+ 90200/164028 batches | lr 0.0000913517 | ms/batch 235.31 | loss 0.28470086 | acc 0.8385
+ 90400/164028 batches | lr 0.0000913517 | ms/batch 236.05 | loss 0.28697270 | acc 0.8441
+ 90600/164028 batches | lr 0.0000913517 | ms/batch 235.73 | loss 0.28996564 | acc 0.8084
+ 90800/164028 batches | lr 0.0000913517 | ms/batch 235.82 | loss 0.28149924 | acc 0.8366
+ 91000/164028 batches | lr 0.0000913517 | ms/batch 236.26 | loss 0.29000348 | acc 0.8381
+ 91200/164028 batches | lr 0.0000913517 | ms/batch 235.79 | loss 0.28629224 | acc 0.8388
+ 91400/164028 batches | lr 0.0000913517 | ms/batch 235.64 | loss 0.28235855 | acc 0.8399
+ 91600/164028 batches | lr 0.0000913517 | ms/batch 235.71 | loss 0.28838160 | acc 0.8185
+ 91800/164028 batches | lr 0.0000913517 | ms/batch 235.95 | loss 0.28850299 | acc 0.8333
+ 92000/164028 batches | lr 0.0000913517 | ms/batch 235.88 | loss 0.28421065 | acc 0.8274
+ 92200/164028 batches | lr 0.0000913517 | ms/batch 235.86 | loss 0.27678880 | acc 0.8298
+ 92400/164028 batches | lr 0.0000913517 | ms/batch 236.06 | loss 0.28779082 | acc 0.8350
+ 92600/164028 batches | lr 0.0000913517 | ms/batch 235.65 | loss 0.28143092 | acc 0.8396
+ 92800/164028 batches | lr 0.0000913517 | ms/batch 235.55 | loss 0.27528160 | acc 0.8253
+ 93000/164028 batches | lr 0.0000913517 | ms/batch 235.80 | loss 0.28779027 | acc 0.8287
+ 93200/164028 batches | lr 0.0000913517 | ms/batch 236.33 | loss 0.28197812 | acc 0.8497
+ 93400/164028 batches | lr 0.0000913517 | ms/batch 235.76 | loss 0.29110430 | acc 0.8411
+ 93600/164028 batches | lr 0.0000913517 | ms/batch 235.85 | loss 0.28779622 | acc 0.8441
+ 93800/164028 batches | lr 0.0000913517 | ms/batch 235.82 | loss 0.28410340 | acc 0.8291
+ 94000/164028 batches | lr 0.0000913517 | ms/batch 236.25 | loss 0.27846383 | acc 0.8370
+ 94200/164028 batches | lr 0.0000913517 | ms/batch 236.08 | loss 0.28060411 | acc 0.8352
+ 94400/164028 batches | lr 0.0000913517 | ms/batch 235.85 | loss 0.27713878 | acc 0.8174
+ 94600/164028 batches | lr 0.0000913517 | ms/batch 236.44 | loss 0.28474217 | acc 0.8359
+ 94800/164028 batches | lr 0.0000913517 | ms/batch 235.86 | loss 0.27947954 | acc 0.8315
+ 95000/164028 batches | lr 0.0000913517 | ms/batch 236.30 | loss 0.28376651 | acc 0.8319
+ 95200/164028 batches | lr 0.0000913517 | ms/batch 235.83 | loss 0.28248865 | acc 0.8333
+ 95400/164028 batches | lr 0.0000913517 | ms/batch 235.93 | loss 0.28352532 | acc 0.8438
+ 95600/164028 batches | lr 0.0000913517 | ms/batch 235.93 | loss 0.28123005 | acc 0.8385
+ 95800/164028 batches | lr 0.0000913517 | ms/batch 236.16 | loss 0.28436154 | acc 0.8330
+ 96000/164028 batches | lr 0.0000913517 | ms/batch 235.93 | loss 0.28258883 | acc 0.8421
+ 96200/164028 batches | lr 0.0000913517 | ms/batch 235.93 | loss 0.27528396 | acc 0.8298
+ 96400/164028 batches | lr 0.0000913517 | ms/batch 235.91 | loss 0.27681807 | acc 0.8233
+ 96600/164028 batches | lr 0.0000913517 | ms/batch 235.95 | loss 0.27871136 | acc 0.8212
+ 96800/164028 batches | lr 0.0000913517 | ms/batch 236.21 | loss 0.27732915 | acc 0.8266
+ 97000/164028 batches | lr 0.0000913517 | ms/batch 235.97 | loss 0.27832346 | acc 0.8352
+ 97200/164028 batches | lr 0.0000913517 | ms/batch 236.35 | loss 0.27830531 | acc 0.8412
+ 97400/164028 batches | lr 0.0000913517 | ms/batch 235.94 | loss 0.26767085 | acc 0.8358
+ 97600/164028 batches | lr 0.0000913517 | ms/batch 236.13 | loss 0.27005644 | acc 0.8328
+ 97800/164028 batches | lr 0.0000913517 | ms/batch 235.81 | loss 0.28022835 | acc 0.8293
+ 98000/164028 batches | lr 0.0000913517 | ms/batch 235.96 | loss 0.27485173 | acc 0.8362
+ 98200/164028 batches | lr 0.0000913517 | ms/batch 235.53 | loss 0.28093578 | acc 0.8377
+ 98400/164028 batches | lr 0.0000913517 | ms/batch 235.89 | loss 0.28309256 | acc 0.8243
+ 98600/164028 batches | lr 0.0000913517 | ms/batch 235.96 | loss 0.28076984 | acc 0.8447
+ 98800/164028 batches | lr 0.0000913517 | ms/batch 235.93 | loss 0.28418430 | acc 0.8251
+ 99000/164028 batches | lr 0.0000913517 | ms/batch 235.89 | loss 0.28521819 | acc 0.8376
+ 99200/164028 batches | lr 0.0000913517 | ms/batch 235.57 | loss 0.27946319 | acc 0.8301
+ 99400/164028 batches | lr 0.0000913517 | ms/batch 235.96 | loss 0.28026267 | acc 0.8341
+ 99600/164028 batches | lr 0.0000913517 | ms/batch 235.66 | loss 0.27682414 | acc 0.8432
+ 99800/164028 batches | lr 0.0000913517 | ms/batch 235.89 | loss 0.28115574 | acc 0.8425
+ 100000/164028 batches | lr 0.0000913517 | ms/batch 236.52 | loss 0.28466196 | acc 0.8350
+ 100200/164028 batches | lr 0.0000904382 | ms/batch 236.00 | loss 0.27324018 | acc 0.8398
+ 100400/164028 batches | lr 0.0000904382 | ms/batch 235.93 | loss 0.27709637 | acc 0.8418
+ 100600/164028 batches | lr 0.0000904382 | ms/batch 235.94 | loss 0.26842593 | acc 0.8503
+ 100800/164028 batches | lr 0.0000904382 | ms/batch 236.02 | loss 0.27658016 | acc 0.8278
+ 101000/164028 batches | lr 0.0000904382 | ms/batch 235.92 | loss 0.27701208 | acc 0.8271
+ 101200/164028 batches | lr 0.0000904382 | ms/batch 236.01 | loss 0.27308797 | acc 0.8281
+ 101400/164028 batches | lr 0.0000904382 | ms/batch 236.41 | loss 0.27796795 | acc 0.8276
+ 101600/164028 batches | lr 0.0000904382 | ms/batch 236.11 | loss 0.27417911 | acc 0.8342
+ 101800/164028 batches | lr 0.0000904382 | ms/batch 236.02 | loss 0.27706853 | acc 0.8410
+ 102000/164028 batches | lr 0.0000904382 | ms/batch 236.11 | loss 0.27933856 | acc 0.8455
+ 102200/164028 batches | lr 0.0000904382 | ms/batch 235.87 | loss 0.27354452 | acc 0.8325
+ 102400/164028 batches | lr 0.0000904382 | ms/batch 236.30 | loss 0.27852647 | acc 0.8462
+ 102600/164028 batches | lr 0.0000904382 | ms/batch 235.85 | loss 0.27422470 | acc 0.8472
+ 102800/164028 batches | lr 0.0000904382 | ms/batch 236.18 | loss 0.28595505 | acc 0.8480
+ 103000/164028 batches | lr 0.0000904382 | ms/batch 235.94 | loss 0.27731076 | acc 0.8404
+ 103200/164028 batches | lr 0.0000904382 | ms/batch 235.95 | loss 0.28115349 | acc 0.8374
+ 103400/164028 batches | lr 0.0000904382 | ms/batch 235.53 | loss 0.27537547 | acc 0.8311
+ 103600/164028 batches | lr 0.0000904382 | ms/batch 235.94 | loss 0.27180119 | acc 0.8483
+ 103800/164028 batches | lr 0.0000904382 | ms/batch 236.15 | loss 0.26289851 | acc 0.8398
+ 104000/164028 batches | lr 0.0000904382 | ms/batch 235.87 | loss 0.27216297 | acc 0.8431
+ 104200/164028 batches | lr 0.0000904382 | ms/batch 235.74 | loss 0.27304331 | acc 0.8301
+ 104400/164028 batches | lr 0.0000904382 | ms/batch 235.79 | loss 0.27178071 | acc 0.8427
+ 104600/164028 batches | lr 0.0000904382 | ms/batch 235.92 | loss 0.27021897 | acc 0.8404
+ 104800/164028 batches | lr 0.0000904382 | ms/batch 236.12 | loss 0.27881691 | acc 0.8346
+ 105000/164028 batches | lr 0.0000904382 | ms/batch 235.85 | loss 0.27204431 | acc 0.8523
+ 105200/164028 batches | lr 0.0000904382 | ms/batch 235.91 | loss 0.26906335 | acc 0.8287
+ 105400/164028 batches | lr 0.0000904382 | ms/batch 235.79 | loss 0.27208639 | acc 0.8361
+ 105600/164028 batches | lr 0.0000904382 | ms/batch 235.87 | loss 0.27123725 | acc 0.8472
+ 105800/164028 batches | lr 0.0000904382 | ms/batch 235.88 | loss 0.26858487 | acc 0.8514
+ 106000/164028 batches | lr 0.0000904382 | ms/batch 236.24 | loss 0.27217876 | acc 0.8391
+ 106200/164028 batches | lr 0.0000904382 | ms/batch 235.91 | loss 0.27473174 | acc 0.8443
+ 106400/164028 batches | lr 0.0000904382 | ms/batch 236.05 | loss 0.27340383 | acc 0.8394
+ 106600/164028 batches | lr 0.0000904382 | ms/batch 235.90 | loss 0.26903817 | acc 0.8391
+ 106800/164028 batches | lr 0.0000904382 | ms/batch 236.21 | loss 0.27174236 | acc 0.8528
+ 107000/164028 batches | lr 0.0000904382 | ms/batch 236.51 | loss 0.26288078 | acc 0.8399
+ 107200/164028 batches | lr 0.0000904382 | ms/batch 235.93 | loss 0.26193513 | acc 0.8414
+ 107400/164028 batches | lr 0.0000904382 | ms/batch 237.04 | loss 0.26794457 | acc 0.8270
+ 107600/164028 batches | lr 0.0000904382 | ms/batch 235.85 | loss 0.26989270 | acc 0.8378
+ 107800/164028 batches | lr 0.0000904382 | ms/batch 236.11 | loss 0.27016630 | acc 0.8312
+ 108000/164028 batches | lr 0.0000904382 | ms/batch 235.88 | loss 0.26733117 | acc 0.8291
+ 108200/164028 batches | lr 0.0000904382 | ms/batch 235.81 | loss 0.26805448 | acc 0.8291
+ 108400/164028 batches | lr 0.0000904382 | ms/batch 235.74 | loss 0.27882179 | acc 0.8441
+ 108600/164028 batches | lr 0.0000904382 | ms/batch 235.76 | loss 0.27065716 | acc 0.8424
+ 108800/164028 batches | lr 0.0000904382 | ms/batch 235.78 | loss 0.26747820 | acc 0.8375
+ 109000/164028 batches | lr 0.0000904382 | ms/batch 236.31 | loss 0.27012399 | acc 0.8497
+ 109200/164028 batches | lr 0.0000904382 | ms/batch 236.21 | loss 0.26366718 | acc 0.8522
+ 109400/164028 batches | lr 0.0000904382 | ms/batch 235.41 | loss 0.27811290 | acc 0.8384
+ 109600/164028 batches | lr 0.0000904382 | ms/batch 236.00 | loss 0.27789340 | acc 0.8337
+ 109800/164028 batches | lr 0.0000904382 | ms/batch 236.17 | loss 0.27446743 | acc 0.8116
+ 110000/164028 batches | lr 0.0000904382 | ms/batch 235.60 | loss 0.26402005 | acc 0.8458
+ 110200/164028 batches | lr 0.0000895338 | ms/batch 236.55 | loss 0.26529118 | acc 0.8111
+ 110400/164028 batches | lr 0.0000895338 | ms/batch 236.07 | loss 0.26551482 | acc 0.8576
+ 110600/164028 batches | lr 0.0000895338 | ms/batch 236.08 | loss 0.26699610 | acc 0.8378
+ 110800/164028 batches | lr 0.0000895338 | ms/batch 235.69 | loss 0.26384107 | acc 0.8423
+ 111000/164028 batches | lr 0.0000895338 | ms/batch 236.00 | loss 0.27179803 | acc 0.8352
+ 111200/164028 batches | lr 0.0000895338 | ms/batch 235.96 | loss 0.26987817 | acc 0.8228
+ 111400/164028 batches | lr 0.0000895338 | ms/batch 235.68 | loss 0.26680296 | acc 0.8411
+ 111600/164028 batches | lr 0.0000895338 | ms/batch 236.10 | loss 0.26576901 | acc 0.8344
+ 111800/164028 batches | lr 0.0000895338 | ms/batch 235.74 | loss 0.27160792 | acc 0.8424
+ 112000/164028 batches | lr 0.0000895338 | ms/batch 236.10 | loss 0.26668115 | acc 0.8369
+ 112200/164028 batches | lr 0.0000895338 | ms/batch 236.01 | loss 0.26812498 | acc 0.8367
+ 112400/164028 batches | lr 0.0000895338 | ms/batch 235.91 | loss 0.26686532 | acc 0.8358
+ 112600/164028 batches | lr 0.0000895338 | ms/batch 235.70 | loss 0.26083791 | acc 0.8341
+ 112800/164028 batches | lr 0.0000895338 | ms/batch 236.06 | loss 0.26627499 | acc 0.8389
+ 113000/164028 batches | lr 0.0000895338 | ms/batch 235.77 | loss 0.26442385 | acc 0.8482
+ 113200/164028 batches | lr 0.0000895338 | ms/batch 236.27 | loss 0.26551910 | acc 0.8429
+ 113400/164028 batches | lr 0.0000895338 | ms/batch 236.08 | loss 0.26343899 | acc 0.8402
+ 113600/164028 batches | lr 0.0000895338 | ms/batch 236.10 | loss 0.26829569 | acc 0.8433
+ 113800/164028 batches | lr 0.0000895338 | ms/batch 236.09 | loss 0.26713860 | acc 0.8471
+ 114000/164028 batches | lr 0.0000895338 | ms/batch 236.22 | loss 0.26206521 | acc 0.8345
+ 114200/164028 batches | lr 0.0000895338 | ms/batch 236.06 | loss 0.25915178 | acc 0.8473
+ 114400/164028 batches | lr 0.0000895338 | ms/batch 235.99 | loss 0.26707007 | acc 0.8405
+ 114600/164028 batches | lr 0.0000895338 | ms/batch 236.06 | loss 0.26245246 | acc 0.8503
+ 114800/164028 batches | lr 0.0000895338 | ms/batch 235.89 | loss 0.26278978 | acc 0.8479
+ 115000/164028 batches | lr 0.0000895338 | ms/batch 235.48 | loss 0.26263537 | acc 0.8439
+ 115200/164028 batches | lr 0.0000895338 | ms/batch 236.06 | loss 0.26571369 | acc 0.8347
+ 115400/164028 batches | lr 0.0000895338 | ms/batch 235.88 | loss 0.26242355 | acc 0.8391
+ 115600/164028 batches | lr 0.0000895338 | ms/batch 236.04 | loss 0.26217413 | acc 0.8502
+ 115800/164028 batches | lr 0.0000895338 | ms/batch 235.88 | loss 0.26271183 | acc 0.8448
+ 116000/164028 batches | lr 0.0000895338 | ms/batch 235.74 | loss 0.26441936 | acc 0.8416
+ 116200/164028 batches | lr 0.0000895338 | ms/batch 235.99 | loss 0.26365870 | acc 0.8293
+ 116400/164028 batches | lr 0.0000895338 | ms/batch 235.97 | loss 0.26319719 | acc 0.8581
+ 116600/164028 batches | lr 0.0000895338 | ms/batch 235.94 | loss 0.26235620 | acc 0.8396
+ 116800/164028 batches | lr 0.0000895338 | ms/batch 236.19 | loss 0.26348750 | acc 0.8459
+ 117000/164028 batches | lr 0.0000895338 | ms/batch 235.96 | loss 0.26077395 | acc 0.8436
+ 117200/164028 batches | lr 0.0000895338 | ms/batch 235.78 | loss 0.25610681 | acc 0.8578
+ 117400/164028 batches | lr 0.0000895338 | ms/batch 235.69 | loss 0.26749352 | acc 0.8425
+ 117600/164028 batches | lr 0.0000895338 | ms/batch 235.98 | loss 0.26795633 | acc 0.8354
+ 117800/164028 batches | lr 0.0000895338 | ms/batch 236.14 | loss 0.26175946 | acc 0.8456
+ 118000/164028 batches | lr 0.0000895338 | ms/batch 235.88 | loss 0.25906207 | acc 0.8367
+ 118200/164028 batches | lr 0.0000895338 | ms/batch 236.18 | loss 0.26073778 | acc 0.8439
+ 118400/164028 batches | lr 0.0000895338 | ms/batch 235.58 | loss 0.25926297 | acc 0.8372
+ 118600/164028 batches | lr 0.0000895338 | ms/batch 235.94 | loss 0.26201638 | acc 0.8409
+ 118800/164028 batches | lr 0.0000895338 | ms/batch 236.05 | loss 0.26812630 | acc 0.8464
+ 119000/164028 batches | lr 0.0000895338 | ms/batch 235.79 | loss 0.26579626 | acc 0.8632
+ 119200/164028 batches | lr 0.0000895338 | ms/batch 235.75 | loss 0.26395567 | acc 0.8442
+ 119400/164028 batches | lr 0.0000895338 | ms/batch 235.78 | loss 0.26277077 | acc 0.8228
+ 119600/164028 batches | lr 0.0000895338 | ms/batch 236.09 | loss 0.25768977 | acc 0.8531
+ 119800/164028 batches | lr 0.0000895338 | ms/batch 236.32 | loss 0.25803941 | acc 0.8413
+ 120000/164028 batches | lr 0.0000895338 | ms/batch 235.86 | loss 0.25913038 | acc 0.8468
+ 120200/164028 batches | lr 0.0000886385 | ms/batch 236.06 | loss 0.26337751 | acc 0.8225
+ 120400/164028 batches | lr 0.0000886385 | ms/batch 235.88 | loss 0.25845284 | acc 0.8404
+ 120600/164028 batches | lr 0.0000886385 | ms/batch 235.78 | loss 0.25125740 | acc 0.8375
+ 120800/164028 batches | lr 0.0000886385 | ms/batch 235.89 | loss 0.25608667 | acc 0.8326
+ 121000/164028 batches | lr 0.0000886385 | ms/batch 236.10 | loss 0.25618966 | acc 0.8423
+ 121200/164028 batches | lr 0.0000886385 | ms/batch 236.20 | loss 0.25813408 | acc 0.8585
+ 121400/164028 batches | lr 0.0000886385 | ms/batch 235.93 | loss 0.26712941 | acc 0.8328
+ 121600/164028 batches | lr 0.0000886385 | ms/batch 236.15 | loss 0.25695244 | acc 0.8462
+ 121800/164028 batches | lr 0.0000886385 | ms/batch 235.91 | loss 0.25930093 | acc 0.8390
+ 122000/164028 batches | lr 0.0000886385 | ms/batch 236.32 | loss 0.25920956 | acc 0.8394
+ 122200/164028 batches | lr 0.0000886385 | ms/batch 236.30 | loss 0.26151914 | acc 0.8247
+ 122400/164028 batches | lr 0.0000886385 | ms/batch 235.88 | loss 0.25543408 | acc 0.8347
+ 122600/164028 batches | lr 0.0000886385 | ms/batch 236.01 | loss 0.26103013 | acc 0.8494
+ 122800/164028 batches | lr 0.0000886385 | ms/batch 235.87 | loss 0.26441368 | acc 0.8523
+ 123000/164028 batches | lr 0.0000886385 | ms/batch 236.13 | loss 0.25187065 | acc 0.8545
+ 123200/164028 batches | lr 0.0000886385 | ms/batch 235.84 | loss 0.25478169 | acc 0.8368
+ 123400/164028 batches | lr 0.0000886385 | ms/batch 236.47 | loss 0.26141327 | acc 0.8546
+ 123600/164028 batches | lr 0.0000886385 | ms/batch 236.11 | loss 0.25626520 | acc 0.8439
+ 123800/164028 batches | lr 0.0000886385 | ms/batch 235.89 | loss 0.25154395 | acc 0.8464
+ 124000/164028 batches | lr 0.0000886385 | ms/batch 236.33 | loss 0.26004489 | acc 0.8429
+ 124200/164028 batches | lr 0.0000886385 | ms/batch 235.79 | loss 0.26052639 | acc 0.8408
+ 124400/164028 batches | lr 0.0000886385 | ms/batch 236.09 | loss 0.26099142 | acc 0.8485
+ 124600/164028 batches | lr 0.0000886385 | ms/batch 235.85 | loss 0.25154422 | acc 0.8503
+ 124800/164028 batches | lr 0.0000886385 | ms/batch 236.07 | loss 0.25436160 | acc 0.8488
+ 125000/164028 batches | lr 0.0000886385 | ms/batch 236.03 | loss 0.26148442 | acc 0.8384
+ 125200/164028 batches | lr 0.0000886385 | ms/batch 236.05 | loss 0.25942120 | acc 0.8582
+ 125400/164028 batches | lr 0.0000886385 | ms/batch 236.18 | loss 0.25861640 | acc 0.8458
+ 125600/164028 batches | lr 0.0000886385 | ms/batch 235.97 | loss 0.26137143 | acc 0.8506
+ 125800/164028 batches | lr 0.0000886385 | ms/batch 235.93 | loss 0.25391873 | acc 0.8617
+ 126000/164028 batches | lr 0.0000886385 | ms/batch 235.73 | loss 0.25849484 | acc 0.8474
+ 126200/164028 batches | lr 0.0000886385 | ms/batch 235.88 | loss 0.25758220 | acc 0.8281
+ 126400/164028 batches | lr 0.0000886385 | ms/batch 236.32 | loss 0.26381273 | acc 0.8388
+ 126600/164028 batches | lr 0.0000886385 | ms/batch 235.81 | loss 0.25347467 | acc 0.8530
+ 126800/164028 batches | lr 0.0000886385 | ms/batch 235.93 | loss 0.25093830 | acc 0.8414
+ 127000/164028 batches | lr 0.0000886385 | ms/batch 235.92 | loss 0.24965585 | acc 0.8522
+ 127200/164028 batches | lr 0.0000886385 | ms/batch 236.45 | loss 0.24914472 | acc 0.8524
+ 127400/164028 batches | lr 0.0000886385 | ms/batch 235.96 | loss 0.25588162 | acc 0.8462
+ 127600/164028 batches | lr 0.0000886385 | ms/batch 235.95 | loss 0.25119758 | acc 0.8438
+ 127800/164028 batches | lr 0.0000886385 | ms/batch 236.11 | loss 0.25634251 | acc 0.8513
+ 128000/164028 batches | lr 0.0000886385 | ms/batch 235.83 | loss 0.25096930 | acc 0.8489
+ 128200/164028 batches | lr 0.0000886385 | ms/batch 236.02 | loss 0.25169406 | acc 0.8530
+ 128400/164028 batches | lr 0.0000886385 | ms/batch 236.19 | loss 0.25427010 | acc 0.8535
+ 128600/164028 batches | lr 0.0000886385 | ms/batch 235.86 | loss 0.25166286 | acc 0.8467
+ 128800/164028 batches | lr 0.0000886385 | ms/batch 236.05 | loss 0.25680513 | acc 0.8514
+ 129000/164028 batches | lr 0.0000886385 | ms/batch 236.00 | loss 0.25723959 | acc 0.8358
+ 129200/164028 batches | lr 0.0000886385 | ms/batch 236.69 | loss 0.25706270 | acc 0.8472
+ 129400/164028 batches | lr 0.0000886385 | ms/batch 235.97 | loss 0.25604287 | acc 0.8445
+ 129600/164028 batches | lr 0.0000886385 | ms/batch 235.98 | loss 0.25049378 | acc 0.8496
+ 129800/164028 batches | lr 0.0000886385 | ms/batch 236.63 | loss 0.25088707 | acc 0.8434
+ 130000/164028 batches | lr 0.0000886385 | ms/batch 236.06 | loss 0.25471354 | acc 0.8554
+ 130200/164028 batches | lr 0.0000877521 | ms/batch 235.77 | loss 0.25496163 | acc 0.8591
+ 130400/164028 batches | lr 0.0000877521 | ms/batch 235.88 | loss 0.25276962 | acc 0.8632
+ 130600/164028 batches | lr 0.0000877521 | ms/batch 236.28 | loss 0.25143151 | acc 0.8457
+ 130800/164028 batches | lr 0.0000877521 | ms/batch 236.03 | loss 0.25170806 | acc 0.8586
+ 131000/164028 batches | lr 0.0000877521 | ms/batch 235.90 | loss 0.25447430 | acc 0.8491
+ 131200/164028 batches | lr 0.0000877521 | ms/batch 236.27 | loss 0.24533496 | acc 0.8623
+ 131400/164028 batches | lr 0.0000877521 | ms/batch 235.88 | loss 0.24946438 | acc 0.8498
+ 131600/164028 batches | lr 0.0000877521 | ms/batch 236.50 | loss 0.25558289 | acc 0.8488
+ 131800/164028 batches | lr 0.0000877521 | ms/batch 236.08 | loss 0.25523695 | acc 0.8473
+ 132000/164028 batches | lr 0.0000877521 | ms/batch 235.90 | loss 0.25902432 | acc 0.8544
+ 132200/164028 batches | lr 0.0000877521 | ms/batch 236.26 | loss 0.24826419 | acc 0.8475
+ 132400/164028 batches | lr 0.0000877521 | ms/batch 235.94 | loss 0.24485597 | acc 0.8461
+ 132600/164028 batches | lr 0.0000877521 | ms/batch 236.03 | loss 0.24879845 | acc 0.8587
+ 132800/164028 batches | lr 0.0000877521 | ms/batch 235.81 | loss 0.25455594 | acc 0.8479
+ 133000/164028 batches | lr 0.0000877521 | ms/batch 236.18 | loss 0.25066218 | acc 0.8567
+ 133200/164028 batches | lr 0.0000877521 | ms/batch 236.14 | loss 0.24988843 | acc 0.8466
+ 133400/164028 batches | lr 0.0000877521 | ms/batch 235.84 | loss 0.25076479 | acc 0.8663
+ 133600/164028 batches | lr 0.0000877521 | ms/batch 235.74 | loss 0.25830314 | acc 0.8369
+ 133800/164028 batches | lr 0.0000877521 | ms/batch 235.87 | loss 0.24608791 | acc 0.8621
+ 134000/164028 batches | lr 0.0000877521 | ms/batch 236.24 | loss 0.24645424 | acc 0.8529
+ 134200/164028 batches | lr 0.0000877521 | ms/batch 236.15 | loss 0.25017370 | acc 0.8625
+ 134400/164028 batches | lr 0.0000877521 | ms/batch 236.29 | loss 0.24676275 | acc 0.8460
+ 134600/164028 batches | lr 0.0000877521 | ms/batch 235.59 | loss 0.25134146 | acc 0.8445
+ 134800/164028 batches | lr 0.0000877521 | ms/batch 235.94 | loss 0.24830774 | acc 0.8604
+ 135000/164028 batches | lr 0.0000877521 | ms/batch 236.22 | loss 0.25330333 | acc 0.8590
+ 135200/164028 batches | lr 0.0000877521 | ms/batch 235.89 | loss 0.25190895 | acc 0.8473
+ 135400/164028 batches | lr 0.0000877521 | ms/batch 235.99 | loss 0.24990431 | acc 0.8473
+ 135600/164028 batches | lr 0.0000877521 | ms/batch 236.11 | loss 0.25144338 | acc 0.8456
+ 135800/164028 batches | lr 0.0000877521 | ms/batch 235.87 | loss 0.25642479 | acc 0.8400
+ 136000/164028 batches | lr 0.0000877521 | ms/batch 235.84 | loss 0.24691383 | acc 0.8631
+ 136200/164028 batches | lr 0.0000877521 | ms/batch 235.63 | loss 0.24645579 | acc 0.8502
+ 136400/164028 batches | lr 0.0000877521 | ms/batch 236.13 | loss 0.24425861 | acc 0.8498
+ 136600/164028 batches | lr 0.0000877521 | ms/batch 236.20 | loss 0.24504765 | acc 0.8453
+ 136800/164028 batches | lr 0.0000877521 | ms/batch 236.00 | loss 0.25027174 | acc 0.8388
+ 137000/164028 batches | lr 0.0000877521 | ms/batch 235.60 | loss 0.24871655 | acc 0.8548
+ 137200/164028 batches | lr 0.0000877521 | ms/batch 235.93 | loss 0.24884345 | acc 0.8475
+ 137400/164028 batches | lr 0.0000877521 | ms/batch 236.41 | loss 0.24924618 | acc 0.8522
+ 137600/164028 batches | lr 0.0000877521 | ms/batch 236.01 | loss 0.25273457 | acc 0.8428
+ 137800/164028 batches | lr 0.0000877521 | ms/batch 236.16 | loss 0.24369202 | acc 0.8417
+ 138000/164028 batches | lr 0.0000877521 | ms/batch 236.21 | loss 0.24939585 | acc 0.8463
+ 138200/164028 batches | lr 0.0000877521 | ms/batch 236.03 | loss 0.24546314 | acc 0.8481
+ 138400/164028 batches | lr 0.0000877521 | ms/batch 236.23 | loss 0.24597331 | acc 0.8492
+ 138600/164028 batches | lr 0.0000877521 | ms/batch 235.92 | loss 0.24590095 | acc 0.8543
+ 138800/164028 batches | lr 0.0000877521 | ms/batch 236.77 | loss 0.24924017 | acc 0.8509
+ 139000/164028 batches | lr 0.0000877521 | ms/batch 235.94 | loss 0.24757144 | acc 0.8653
+ 139200/164028 batches | lr 0.0000877521 | ms/batch 236.40 | loss 0.24855917 | acc 0.8518
+ 139400/164028 batches | lr 0.0000877521 | ms/batch 236.13 | loss 0.24266473 | acc 0.8498
+ 139600/164028 batches | lr 0.0000877521 | ms/batch 236.14 | loss 0.25494287 | acc 0.8575
+ 139800/164028 batches | lr 0.0000877521 | ms/batch 236.58 | loss 0.24013214 | acc 0.8464
+ 140000/164028 batches | lr 0.0000877521 | ms/batch 236.00 | loss 0.24986911 | acc 0.8506
+ 140200/164028 batches | lr 0.0000868746 | ms/batch 236.21 | loss 0.24999063 | acc 0.8582
+ 140400/164028 batches | lr 0.0000868746 | ms/batch 236.12 | loss 0.24743127 | acc 0.8564
+ 140600/164028 batches | lr 0.0000868746 | ms/batch 236.13 | loss 0.24730877 | acc 0.8493
+ 140800/164028 batches | lr 0.0000868746 | ms/batch 236.08 | loss 0.24872324 | acc 0.8457
+ 141000/164028 batches | lr 0.0000868746 | ms/batch 236.03 | loss 0.24951759 | acc 0.8635
+ 141200/164028 batches | lr 0.0000868746 | ms/batch 236.04 | loss 0.25409762 | acc 0.8520
+ 141400/164028 batches | lr 0.0000868746 | ms/batch 236.20 | loss 0.24129181 | acc 0.8556
+ 141600/164028 batches | lr 0.0000868746 | ms/batch 236.05 | loss 0.24796819 | acc 0.8539
+ 141800/164028 batches | lr 0.0000868746 | ms/batch 235.92 | loss 0.24890483 | acc 0.8472
+ 142000/164028 batches | lr 0.0000868746 | ms/batch 236.06 | loss 0.25042017 | acc 0.8582
+ 142200/164028 batches | lr 0.0000868746 | ms/batch 236.30 | loss 0.24151311 | acc 0.8379
+ 142400/164028 batches | lr 0.0000868746 | ms/batch 236.15 | loss 0.24305718 | acc 0.8479
+ 142600/164028 batches | lr 0.0000868746 | ms/batch 235.96 | loss 0.24311181 | acc 0.8541
+ 142800/164028 batches | lr 0.0000868746 | ms/batch 235.79 | loss 0.24222098 | acc 0.8564
+ 143000/164028 batches | lr 0.0000868746 | ms/batch 236.06 | loss 0.24753167 | acc 0.8357
+ 143200/164028 batches | lr 0.0000868746 | ms/batch 236.11 | loss 0.24353324 | acc 0.8531
+ 143400/164028 batches | lr 0.0000868746 | ms/batch 236.03 | loss 0.24744319 | acc 0.8576
+ 143600/164028 batches | lr 0.0000868746 | ms/batch 235.85 | loss 0.24857423 | acc 0.8580
+ 143800/164028 batches | lr 0.0000868746 | ms/batch 236.20 | loss 0.24709580 | acc 0.8665
+ 144000/164028 batches | lr 0.0000868746 | ms/batch 235.94 | loss 0.24291462 | acc 0.8536
+ 144200/164028 batches | lr 0.0000868746 | ms/batch 236.04 | loss 0.24353514 | acc 0.8559
+ 144400/164028 batches | lr 0.0000868746 | ms/batch 236.13 | loss 0.24309941 | acc 0.8385
+ 144600/164028 batches | lr 0.0000868746 | ms/batch 235.89 | loss 0.24634168 | acc 0.8579
+ 144800/164028 batches | lr 0.0000868746 | ms/batch 235.32 | loss 0.24305617 | acc 0.8622
+ 145000/164028 batches | lr 0.0000868746 | ms/batch 236.07 | loss 0.24205654 | acc 0.8564
+ 145200/164028 batches | lr 0.0000868746 | ms/batch 235.87 | loss 0.23985905 | acc 0.8767
+ 145400/164028 batches | lr 0.0000868746 | ms/batch 236.20 | loss 0.25438517 | acc 0.8456
+ 145600/164028 batches | lr 0.0000868746 | ms/batch 236.02 | loss 0.24587181 | acc 0.8519
+ 145800/164028 batches | lr 0.0000868746 | ms/batch 236.10 | loss 0.23793659 | acc 0.8509
+ 146000/164028 batches | lr 0.0000868746 | ms/batch 235.87 | loss 0.24653759 | acc 0.8562
+ 146200/164028 batches | lr 0.0000868746 | ms/batch 235.67 | loss 0.24588504 | acc 0.8582
+ 146400/164028 batches | lr 0.0000868746 | ms/batch 235.99 | loss 0.25027914 | acc 0.8580
+ 146600/164028 batches | lr 0.0000868746 | ms/batch 235.92 | loss 0.24602312 | acc 0.8500
+ 146800/164028 batches | lr 0.0000868746 | ms/batch 236.01 | loss 0.24158374 | acc 0.8542
+ 147000/164028 batches | lr 0.0000868746 | ms/batch 235.84 | loss 0.24371753 | acc 0.8503
+ 147200/164028 batches | lr 0.0000868746 | ms/batch 236.65 | loss 0.24186087 | acc 0.8571
+ 147400/164028 batches | lr 0.0000868746 | ms/batch 235.82 | loss 0.24294912 | acc 0.8751
+ 147600/164028 batches | lr 0.0000868746 | ms/batch 236.28 | loss 0.23957736 | acc 0.8376
+ 147800/164028 batches | lr 0.0000868746 | ms/batch 236.05 | loss 0.23815711 | acc 0.8488
+ 148000/164028 batches | lr 0.0000868746 | ms/batch 236.01 | loss 0.23946196 | acc 0.8633
+ 148200/164028 batches | lr 0.0000868746 | ms/batch 236.11 | loss 0.24507794 | acc 0.8621
+ 148400/164028 batches | lr 0.0000868746 | ms/batch 235.83 | loss 0.23586038 | acc 0.8674
+ 148600/164028 batches | lr 0.0000868746 | ms/batch 236.31 | loss 0.23303653 | acc 0.8593
+ 148800/164028 batches | lr 0.0000868746 | ms/batch 236.05 | loss 0.24226519 | acc 0.8481
+ 149000/164028 batches | lr 0.0000868746 | ms/batch 235.85 | loss 0.24041858 | acc 0.8651
+ 149200/164028 batches | lr 0.0000868746 | ms/batch 236.80 | loss 0.24646775 | acc 0.8437
+ 149400/164028 batches | lr 0.0000868746 | ms/batch 235.84 | loss 0.23956975 | acc 0.8463
+ 149600/164028 batches | lr 0.0000868746 | ms/batch 236.02 | loss 0.24706295 | acc 0.8722
+ 149800/164028 batches | lr 0.0000868746 | ms/batch 236.19 | loss 0.24196895 | acc 0.8598
+ 150000/164028 batches | lr 0.0000868746 | ms/batch 236.50 | loss 0.24044220 | acc 0.8528
+ 150200/164028 batches | lr 0.0000860058 | ms/batch 236.23 | loss 0.23995932 | acc 0.8554
+ 150400/164028 batches | lr 0.0000860058 | ms/batch 235.87 | loss 0.24783541 | acc 0.8501
+ 150600/164028 batches | lr 0.0000860058 | ms/batch 236.09 | loss 0.23750825 | acc 0.8591
+ 150800/164028 batches | lr 0.0000860058 | ms/batch 235.90 | loss 0.24310583 | acc 0.8581
+ 151000/164028 batches | lr 0.0000860058 | ms/batch 236.13 | loss 0.24095704 | acc 0.8582
+ 151200/164028 batches | lr 0.0000860058 | ms/batch 236.11 | loss 0.24367171 | acc 0.8673
+ 151400/164028 batches | lr 0.0000860058 | ms/batch 235.98 | loss 0.24349172 | acc 0.8693
+ 151600/164028 batches | lr 0.0000860058 | ms/batch 236.06 | loss 0.24116146 | acc 0.8461
+ 151800/164028 batches | lr 0.0000860058 | ms/batch 235.83 | loss 0.24108058 | acc 0.8571
+ 152000/164028 batches | lr 0.0000860058 | ms/batch 236.11 | loss 0.23896625 | acc 0.8644
+ 152200/164028 batches | lr 0.0000860058 | ms/batch 236.20 | loss 0.24175007 | acc 0.8561
+ 152400/164028 batches | lr 0.0000860058 | ms/batch 235.97 | loss 0.24404699 | acc 0.8559
+ 152600/164028 batches | lr 0.0000860058 | ms/batch 235.72 | loss 0.24019709 | acc 0.8439
+ 152800/164028 batches | lr 0.0000860058 | ms/batch 235.76 | loss 0.24114253 | acc 0.8606
+ 153000/164028 batches | lr 0.0000860058 | ms/batch 236.33 | loss 0.24048331 | acc 0.8527
+ 153200/164028 batches | lr 0.0000860058 | ms/batch 236.00 | loss 0.23672236 | acc 0.8633
+ 153400/164028 batches | lr 0.0000860058 | ms/batch 236.11 | loss 0.23278999 | acc 0.8583
+ 153600/164028 batches | lr 0.0000860058 | ms/batch 236.06 | loss 0.24114271 | acc 0.8581
+ 153800/164028 batches | lr 0.0000860058 | ms/batch 236.00 | loss 0.24443788 | acc 0.8465
+ 154000/164028 batches | lr 0.0000860058 | ms/batch 236.10 | loss 0.25234574 | acc 0.8570
+ 154200/164028 batches | lr 0.0000860058 | ms/batch 235.98 | loss 0.24269005 | acc 0.8599
+ 154400/164028 batches | lr 0.0000860058 | ms/batch 235.99 | loss 0.24285209 | acc 0.8418
+ 154600/164028 batches | lr 0.0000860058 | ms/batch 236.19 | loss 0.24797714 | acc 0.8575
+ 154800/164028 batches | lr 0.0000860058 | ms/batch 235.83 | loss 0.23569292 | acc 0.8450
+ 155000/164028 batches | lr 0.0000860058 | ms/batch 236.01 | loss 0.24267367 | acc 0.8470
+ 155200/164028 batches | lr 0.0000860058 | ms/batch 236.14 | loss 0.24392853 | acc 0.8677
+ 155400/164028 batches | lr 0.0000860058 | ms/batch 236.04 | loss 0.24359825 | acc 0.8561
+ 155600/164028 batches | lr 0.0000860058 | ms/batch 235.85 | loss 0.23619389 | acc 0.8510
+ 155800/164028 batches | lr 0.0000860058 | ms/batch 236.21 | loss 0.23646802 | acc 0.8628
+ 156000/164028 batches | lr 0.0000860058 | ms/batch 236.01 | loss 0.23124772 | acc 0.8595
+ 156200/164028 batches | lr 0.0000860058 | ms/batch 236.04 | loss 0.23427773 | acc 0.8570
+ 156400/164028 batches | lr 0.0000860058 | ms/batch 236.06 | loss 0.23757305 | acc 0.8654
+ 156600/164028 batches | lr 0.0000860058 | ms/batch 236.01 | loss 0.24397620 | acc 0.8470
+ 156800/164028 batches | lr 0.0000860058 | ms/batch 235.95 | loss 0.23551882 | acc 0.8452
+ 157000/164028 batches | lr 0.0000860058 | ms/batch 236.03 | loss 0.24027903 | acc 0.8434
+ 157200/164028 batches | lr 0.0000860058 | ms/batch 236.03 | loss 0.23989653 | acc 0.8638
+ 157400/164028 batches | lr 0.0000860058 | ms/batch 235.98 | loss 0.23713834 | acc 0.8594
+ 157600/164028 batches | lr 0.0000860058 | ms/batch 236.03 | loss 0.23472937 | acc 0.8802
+ 157800/164028 batches | lr 0.0000860058 | ms/batch 236.01 | loss 0.23836720 | acc 0.8528
+ 158000/164028 batches | lr 0.0000860058 | ms/batch 235.82 | loss 0.24526725 | acc 0.8551
+ 158200/164028 batches | lr 0.0000860058 | ms/batch 236.17 | loss 0.23706220 | acc 0.8471
+ 158400/164028 batches | lr 0.0000860058 | ms/batch 236.00 | loss 0.23859105 | acc 0.8423
+ 158600/164028 batches | lr 0.0000860058 | ms/batch 236.05 | loss 0.24126547 | acc 0.8543
+ 158800/164028 batches | lr 0.0000860058 | ms/batch 236.12 | loss 0.24195854 | acc 0.8684
+ 159000/164028 batches | lr 0.0000860058 | ms/batch 235.86 | loss 0.24121088 | acc 0.8390
+ 159200/164028 batches | lr 0.0000860058 | ms/batch 236.27 | loss 0.24282956 | acc 0.8714
+ 159400/164028 batches | lr 0.0000860058 | ms/batch 236.06 | loss 0.24048070 | acc 0.8574
+ 159600/164028 batches | lr 0.0000860058 | ms/batch 236.30 | loss 0.24373409 | acc 0.8726
+ 159800/164028 batches | lr 0.0000860058 | ms/batch 236.07 | loss 0.23795550 | acc 0.8673
+ 160000/164028 batches | lr 0.0000860058 | ms/batch 235.95 | loss 0.23642155 | acc 0.8676
+ 160200/164028 batches | lr 0.0000851458 | ms/batch 236.25 | loss 0.23583152 | acc 0.8736
+ 160400/164028 batches | lr 0.0000851458 | ms/batch 235.91 | loss 0.23311907 | acc 0.8539
+ 160600/164028 batches | lr 0.0000851458 | ms/batch 236.22 | loss 0.23448094 | acc 0.8546
+ 160800/164028 batches | lr 0.0000851458 | ms/batch 236.11 | loss 0.23511028 | acc 0.8706
+ 161000/164028 batches | lr 0.0000851458 | ms/batch 235.93 | loss 0.23782810 | acc 0.8625
+ 161200/164028 batches | lr 0.0000851458 | ms/batch 236.21 | loss 0.23640940 | acc 0.8444
+ 161400/164028 batches | lr 0.0000851458 | ms/batch 235.79 | loss 0.23168367 | acc 0.8614
+ 161600/164028 batches | lr 0.0000851458 | ms/batch 236.25 | loss 0.23513530 | acc 0.8537
+ 161800/164028 batches | lr 0.0000851458 | ms/batch 236.15 | loss 0.23666219 | acc 0.8537
+ 162000/164028 batches | lr 0.0000851458 | ms/batch 235.90 | loss 0.24401022 | acc 0.8610
+ 162200/164028 batches | lr 0.0000851458 | ms/batch 235.68 | loss 0.23099573 | acc 0.8480
+ 162400/164028 batches | lr 0.0000851458 | ms/batch 235.84 | loss 0.23540176 | acc 0.8628
+ 162600/164028 batches | lr 0.0000851458 | ms/batch 235.94 | loss 0.23526568 | acc 0.8753
+ 162800/164028 batches | lr 0.0000851458 | ms/batch 236.00 | loss 0.23630420 | acc 0.8557
+ 163000/164028 batches | lr 0.0000851458 | ms/batch 235.71 | loss 0.23049721 | acc 0.8787
+ 163200/164028 batches | lr 0.0000851458 | ms/batch 236.42 | loss 0.23836037 | acc 0.8570
+ 163400/164028 batches | lr 0.0000851458 | ms/batch 235.75 | loss 0.23826908 | acc 0.8412
+ 163600/164028 batches | lr 0.0000851458 | ms/batch 235.82 | loss 0.23224109 | acc 0.8706
+ 163800/164028 batches | lr 0.0000851458 | ms/batch 236.04 | loss 0.23310550 | acc 0.8445
+ 164000/164028 batches | lr 0.0000851458 | ms/batch 235.45 | loss 0.23101367 | acc 0.8544
+Traceback (most recent call last):
+  File "main.py", line 27, in <module>
+    print("ACCURACY of epoch {} = {}".format(acc))
+IndexError: tuple index out of range

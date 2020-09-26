@@ -19,7 +19,7 @@ class MoleculeTransformerTrainer():
     Methods:
 
     """
-    def __init__(self, train_file, class_weight='none'):
+    def __init__(self, train_file=None, vocab_file=None, class_weight='none'):
         self.mol_emsize = 128 # Embedded molecule sizes
         self.n_layers = 8 # Number of attentions and feed-forwards
         self.n_head = 8 # Attention heads
@@ -28,15 +28,16 @@ class MoleculeTransformerTrainer():
         self.epochs = 3
         self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         self.class_weight=class_weight
+        self.vocab_file = vocab_file
 
         print("Generate tokenizers. . . .")
         self.gen_tokenizers()
         print("Generate dataloaders. . . .")
         dataload_time = time.time()
         self.gen_dataloader(train_file)
+
         self.n_tokens = 73#len(self.smile_mol_tokenizer.vocab.stoi)
         print("Data loading finished : {:5.2f}sec".format(time.time()-dataload_time))
-
         token_idx = self.smile_mol_tokenizer.vocab.stoi
         self.ignored_token = token_idx['<unk>']
         self.mask_token = token_idx[' ']
@@ -65,8 +66,10 @@ class MoleculeTransformerTrainer():
                                                           ('output', self.smile_mol_masked_tokenizer)])
 
         self.train_data, self.test_data = smile_data_training.split(split_ratio=0.8)
-
-        self.smile_mol_tokenizer.build_vocab(smile_data_training)
+        if self.vocab_file == None:
+            self.smile_mol_tokenizer.build_vocab(smile_data_training)
+        else:
+            self.smile_mol_tokenizer = torch.load(self.vocab_file)
         self.smile_mol_masked_tokenizer.vocab = self.smile_mol_tokenizer.vocab
         self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
                                                                       batch_size=512,
@@ -202,6 +205,9 @@ class MoleculeTransformerTrainer():
                                       self.n_hid,
                                       self.n_layers).to(self.device)
         self.model.load_state_dict(torch.load(PATH))
+
+    def save_vocab(self, PATH="vocab"):
+        torch.save(self.smile_mol_tokenizer, PATH)
 
     def print_params(self):
         print("Model parameters::")
