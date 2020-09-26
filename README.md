@@ -23,4 +23,4 @@ optional arguments:
 
 ### Final accuracy
 - Epochs 1, without loss weights: 0.9471
--
+- Epochs 3, without loss weights: 0.9554
