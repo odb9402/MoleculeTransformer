@@ -931,7 +931,3 @@ Training processes . . . .
  163600/164028 batches | lr 0.0000851458 | ms/batch 235.82 | loss 0.23224109 | acc 0.8706
  163800/164028 batches | lr 0.0000851458 | ms/batch 236.04 | loss 0.23310550 | acc 0.8445
  164000/164028 batches | lr 0.0000851458 | ms/batch 235.45 | loss 0.23101367 | acc 0.8544
-Traceback (most recent call last):
-  File "main.py", line 27, in <module>
-    print("ACCURACY of epoch {} = {}".format(acc))
-IndexError: tuple index out of range

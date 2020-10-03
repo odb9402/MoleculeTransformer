@@ -2,11 +2,13 @@ from molecule_transformer_trainer import MoleculeTransformerTrainer
 from model import MoleculeTransformer
 import argparse
 import sys
+import glob
 
 parser = argparse.ArgumentParser(description="Molecule transformer training")
 parser.add_argument("-i", "--input", help="Input training SMILES file.")
 parser.add_argument("-e", "--epochs", type=int, default=3)
-parser.add_argument("--lossWeight", choices=['none','log','sqrt','raw'], default='raw',
+parser.add_argument("-v", "--vocab", help="Vocabulary file")
+parser.add_argument("--lossWeight", choices=['none','log','sqrt','raw'], default='none',
                     help="The type of class weights for the cross entropy loss.")
 args = parser.parse_args()
 
@@ -14,14 +16,28 @@ if args.input == None:
     parser.print_help()
     sys.exit()
 
-trainer = MoleculeTransformerTrainer(args.input, class_weight=args.lossWeight)
+trainer = MoleculeTransformerTrainer(args.input,
+                                     class_weight=args.lossWeight,
+                                     vocab_file=args.vocab)
 
+print("Dataset split. . . .")
+directory = MoleculeTransformerTrainer.split_file(args.input)
+datasets = glob.glob(directory + "/*")
+print("Splited datasets:" + str(datasets))
+
+if args.vocab != None:
+    trainer.load_vocab()
+print(trainer.smile_mol_tokenizer.vocab.stoi)
 trainer.build_model()
 trainer.print_params()
 print("Training processes . . . .")
 
 for i in range(args.epochs):
-    trainer.train(log='stdout')
+    for data in datasets:
+        print("Load the dataset {}".format(data))
+        trainer.gen_dataloader(data)
+        print("Training for splited file {}".format(data))
+        trainer.train(log='stdout')
     trainer.save_model("model{}".format(i+1))
     acc = trainer.evaluate_acc()
     print("ACCURACY of epoch {} = {}".format(i+1, acc))

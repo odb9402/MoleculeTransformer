@@ -3,14 +3,18 @@ import torch.nn
 import torchtext
 import random
 import re
+import multiprocessing as mp
 from molecule_transformer_trainer import MoleculeTransformerTrainer
 from torchtext.data.utils import get_tokenizer
+from collections import Counter
+import subprocess as sp
 
 import argparse
 
 parser = argparse.ArgumentParser(description="Molecule transformer training")
 parser.add_argument("-i", "--input", default="CID-SMILES.txt", help="Input training raw SMILES file.")
-parser.add_argument("-o", "--output", default="CID-SMILES_train.txt", help="Comma separated training SMILES file.")
+parser.add_argument("-o", "--output", default="CID-SMILES_train_tok.txt", help="Comma separated training SMILES file.")
+parser.add_argument("-v", "--vocab", default="mt_vocab.voc", help="Saved torch tensor file for the vocab.")
 args = parser.parse_args()
 
 input_file = args.input #'./CID-SMILES.txt'
@@ -21,28 +25,40 @@ def valid_SMILES(mol_str):
     match = template.match(mol_str)
     return bool(match)
 
-smile_mol_tokenizer = torchtext.data.Field(init_token='<BEGIN>',
-                                          pad_token='<PAD>',
-                                          fix_length=True,
-                                          #tokenize=list,
-                                          tokenize=MoleculeTransformerTrainer.tokenize_train_new,
-                                          eos_token='<END>')
 
-smile_data = torchtext.data.TabularDataset(path=input_file,
-                                          format='tsv',
-                                          fields=[('smile_mol', smile_mol_tokenizer)])
 
-train_data, test_data = smile_data.split(split_ratio=0.7)
-smile_mol_tokenizer.build_vocab(smile_data)
+result = sp.check_output(["sh", "count.sh", args.input])
+counter = Counter()
+for line in result.decode('utf-8').split('\n'):
+    if line.rstrip('\n') != '':
+        key, count = line.split()
+        counter[key] = int(count)
+vocab = torchtext.vocab.Vocab(counter, specials=['<unk>', '<PAD>', '<REP>'])
+torch.save(vocab, args.vocab) ## Save vocab file
+possible_tokens = vocab.itos[2:]
 
-possible_tokens = smile_mol_tokenizer.vocab.itos[4:]
+#smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>',
+#                                          pad_token='<PAD>',
+#                                          tokenize=list)#,
+#smile_data = torchtext.data.TabularDataset(path=input_file,
+#                                          format='tsv',
+#                                          fields=[('smile_mol', smile_mol_tokenizer)])
+#smile_mol_tokenizer.build_vocab(smile_data)
+#torch.save(smile_mol_tokenizer.vocab, args.vocab) ## Save vocab file
+#possible_tokens = smile_mol_tokenizer.vocab.itos[4:]
+
 input_data = open(input_file, 'r')
 masked_output_file = open(masked_output_file, 'w')
 
+io_step = 0
+io_string = ''
+
 for mol in input_data:
-    mol = mol.rstrip()
-    if not valid_SMILES(mol):
+    if not valid_SMILES(mol.rstrip()):
         continue
+    mol = MoleculeTransformerTrainer.tokenize_train_new(mol)
+    #mol = mol.rstrip()
+    
     masked_mol = ""
     output_mol = ""
     for i in range(len(mol)):
@@ -58,6 +74,16 @@ for mol in input_data:
         else:
             masked_mol += mol[i] ### Ignore sequence &. The index of & will be ignored when calculate the loss.
             output_mol += "&"
-    masked_output_file.write("$"+masked_mol+"$"+","+"$" + output_mol +"$"+ "\n") ## "$" as the <BEGIN> and <END> token
+    io_step += 1
+    io_string += "$" + masked_mol + "$" + "," + "$" + output_mol + "$" + "\n"
+    
+    if io_step % 100000 == 0 and io_step != 0:
+        masked_output_file.write(io_string)
+        masked_output_file.flush()
+        io_string = ''
+        #masked_output_file.write("$"+masked_mol+"$"+","+"$" + output_mol +"$"+ "\n") ## "$" as the <BEGIN> and <END> token
 
+if io_string != '':
+    masked_output_file.write(io_string)
+    masked_output_file.flush()
 masked_output_file.close()

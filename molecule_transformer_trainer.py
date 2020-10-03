@@ -33,15 +33,9 @@ class MoleculeTransformerTrainer():
         print("Generate tokenizers. . . .")
         self.gen_tokenizers()
         print("Generate dataloaders. . . .")
-        dataload_time = time.time()
-        self.gen_dataloader(train_file)
+        #self.gen_dataloader(train_file)
 
         self.n_tokens = 73#len(self.smile_mol_tokenizer.vocab.stoi)
-        print("Data loading finished : {:5.2f}sec".format(time.time()-dataload_time))
-        token_idx = self.smile_mol_tokenizer.vocab.stoi
-        self.ignored_token = token_idx['<unk>']
-        self.mask_token = token_idx[' ']
-        self.untargeted_tokens = ['<unk>', '<PAD>', '<REP>', '$', ' ']
 
         self.loss_history = []
         self.acc_history = []
@@ -50,6 +44,7 @@ class MoleculeTransformerTrainer():
         self.smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>', ### $ is the [BEGIN]
                                                   pad_token='<PAD>',
                                                   tokenize=list,
+                                                  #tokenize=self.tokenize_train_new,
                                                   fix_length=100,
                                                   batch_first=True)
 
@@ -67,12 +62,18 @@ class MoleculeTransformerTrainer():
 
         self.train_data, self.test_data = smile_data_training.split(split_ratio=0.8)
         if self.vocab_file == None:
+            print("Build vocabulary")
             self.smile_mol_tokenizer.build_vocab(smile_data_training)
+        elif type(self.smile_mol_tokenizer.vocab) == torchtext.vocab.Vocab:
+            pass
         else:
-            self.smile_mol_tokenizer = torch.load(self.vocab_file)
+            print("There is an existing vocabulary: {}".format(self.vocab_file))
+            saved_tokens = torch.load(self.vocab_file)
+            self.smile_mol_tokenizer.vocab = saved_tokens
         self.smile_mol_masked_tokenizer.vocab = self.smile_mol_tokenizer.vocab
+        print("Gen Iterator")
         self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
-                                                                      batch_size=512,
+                                                                      batch_size=128,
                                                                       shuffle=True,
                                                                       device=self.device,
                                                                       repeat=False,
@@ -116,6 +117,7 @@ class MoleculeTransformerTrainer():
             log_file = open('train_log.txt', 'w')
 
         self.model.train()
+        print("this?")
         total_loss = 0.
         start_time = time.time()
         i = 0
@@ -208,7 +210,21 @@ class MoleculeTransformerTrainer():
 
     def save_vocab(self, PATH="vocab"):
         torch.save(self.smile_mol_tokenizer, PATH)
-
+    
+    def load_vocab(self, PATH=None):
+        if PATH == None:
+            PATH = self.vocab_file
+        print("Token vocabulary {} is loaded.".format(PATH))
+        saved_tokens = torch.load(PATH)
+        if self.smile_mol_tokenizer == None:
+            print("There is no existing tokenizer")
+        else:
+            self.smile_mol_tokenizer.vocab = saved_tokens
+        token_idx = self.smile_mol_tokenizer.vocab.stoi
+        self.ignored_token = token_idx['<unk>']
+        self.mask_token = token_idx[' ']
+        self.untargeted_tokens = ['<unk>', '<PAD>', '<REP>', '$', ' ']
+        
     def print_params(self):
         print("Model parameters::")
         for param_tensor in self.model.state_dict():
@@ -274,7 +290,10 @@ class MoleculeTransformerTrainer():
             e.g) Br, Cl
         2. Chemical with brackets are going to be a single token.
             e.g) [NH4+]
-
+        
+        Note: Should we ignore the isotypes?: The number of neutrons
+            e.g) 155Tb, 156Tb, 157Tb . . . 
+        
         return: tokenized list
         """
         tokens = []
@@ -286,8 +305,10 @@ class MoleculeTransformerTrainer():
         while i < len(mol_str):
             if mol_str[i] == '[':
                 long_chr = True
+                current_str += '['
             elif mol_str[i] == ']':
                 long_chr = False
+                current_str += ']'
             else:
                 current_str += mol_str[i]
 
@@ -302,7 +323,60 @@ class MoleculeTransformerTrainer():
                     i += 1
 
             if not long_chr:
-                tokens.append(current_str)
+                # Ignore isotypes
+                if current_str[0] == '[':
+                #    isotype_ignored_str = '['
+                #    isotype_switch = False
+                #    for j in range(len(current_str)):
+                #        if re.match([0-9]^, j+1):
+                #            isotype_switch = True
+                #        if isotype_switch:
+                #            isotype_ignored_str += current_str[j]
+                #    tokens.append(isotype_ignored_str)
+                    tokens.append(current_str)
+                else:
+                    tokens.append(current_str)
                 current_str = ''
             i += 1
         return tokens
+    
+    @staticmethod
+    def split_file(target_file, target_dir="trainDataset", line_num=10000000):
+        """
+        Split the given training file in "target_dir" by "line_num"
+        
+        return: a name of the target directory.
+        """
+        import os
+        if not os.path.isdir("trainDataset"):
+            os.mkdir("trainDataset")
+        else:
+            print("The target dir {} already exist.".format(target_dir))
+            return target_dir
+        train_file = open(target_file, 'r')
+
+        i = 0
+        j = 0
+        write_str = ""
+        for line in train_file:
+            write_str += line
+            if i % line_num == 0 and i != 0:
+                new_file_name = "trainDataset/{}_{}.{}".format(target_file.rsplit(".",1)[0],
+                                                               str(j), target_file.rsplit(".",1)[1])
+                print(new_file_name)
+                new_file = open(new_file_name, 'w')
+                new_file.write(write_str)
+                new_file.close()
+                write_str = ""
+                j += 1
+            i += 1
+
+        if len(write_str) > 1:
+            new_file_name = "trainDataset/{}_{}.{}".format(target_file.rsplit(".",1)[0],
+                                                           str(j), target_file.rsplit(".",1)[1])
+            print(new_file_name)
+            new_file = open(new_file_name, 'w')
+            new_file.write(write_str)
+            new_file.close()
+        
+        return target_dir
