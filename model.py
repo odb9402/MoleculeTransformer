@@ -67,7 +67,7 @@ class MoleculeTransformer(torch.nn.Module):
         attention_mask = attention_mask.masked_fill(src!=1., 0.)
         attention_mask = attention_mask.bool().to(src.device)
 
-        output = self.transformer_encoder(input_emb, src_key_padding_mask=attention_mask) ### Self-attention layers : dim = ninp
+        output = self.transformer_encoder(input_emb)#, src_key_padding_mask=attention_mask) ### Self-attention layers : dim = ninp
         output = self.decoder(output) + self.decoder_bias ### decoding
 
         return output

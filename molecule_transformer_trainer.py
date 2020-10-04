@@ -73,7 +73,7 @@ class MoleculeTransformerTrainer():
         self.smile_mol_masked_tokenizer.vocab = self.smile_mol_tokenizer.vocab
         print("Gen Iterator")
         self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
-                                                                      batch_size=128,
+                                                                      batch_size=256,
                                                                       shuffle=True,
                                                                       device=self.device,
                                                                       repeat=False,
@@ -117,7 +117,6 @@ class MoleculeTransformerTrainer():
             log_file = open('train_log.txt', 'w')
 
         self.model.train()
-        print("this?")
         total_loss = 0.
         start_time = time.time()
         i = 0

@@ -26,27 +26,26 @@ def valid_SMILES(mol_str):
     return bool(match)
 
 
-
 result = sp.check_output(["sh", "count.sh", args.input])
 counter = Counter()
 for line in result.decode('utf-8').split('\n'):
     if line.rstrip('\n') != '':
         key, count = line.split()
         counter[key] = int(count)
-vocab = torchtext.vocab.Vocab(counter, specials=['<unk>', '<PAD>', '<REP>'])
+vocab = torchtext.vocab.Vocab(counter, specials=['<unk>', '<PAD>', '<REP>',' ']) ## ' ' is the mask
 torch.save(vocab, args.vocab) ## Save vocab file
 possible_tokens = vocab.itos[2:]
-
-#smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>',
-#                                          pad_token='<PAD>',
-#                                          tokenize=list)#,
-#smile_data = torchtext.data.TabularDataset(path=input_file,
-#                                          format='tsv',
-#                                          fields=[('smile_mol', smile_mol_tokenizer)])
-#smile_mol_tokenizer.build_vocab(smile_data)
-#torch.save(smile_mol_tokenizer.vocab, args.vocab) ## Save vocab file
-#possible_tokens = smile_mol_tokenizer.vocab.itos[4:]
-
+"""
+smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>',
+                                          pad_token='<PAD>',
+                                          tokenize=list)#,
+smile_data = torchtext.data.TabularDataset(path=input_file,
+                                          format='tsv',
+                                          fields=[('smile_mol', smile_mol_tokenizer)])
+smile_mol_tokenizer.build_vocab(smile_data)
+torch.save(smile_mol_tokenizer.vocab, args.vocab) ## Save vocab file
+possible_tokens = smile_mol_tokenizer.vocab.itos[2:]
+"""
 input_data = open(input_file, 'r')
 masked_output_file = open(masked_output_file, 'w')
 
