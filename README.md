@@ -6,8 +6,8 @@ The BERT-based embedding model for SMILES molecule representation from the paper
 ## Usage
 ```python
 awk '{OFS="\t"; FS="\t"; print $2}' CID-SMILES > CID-SMILES.txt
-python preprocess.py -i CID-SMILES.txt -o CID-SMILES_train.txt
-python main.py -i CID-SMILES_train.txt -e 5 --lossWeight none
+python preprocess.py -i CID-SMILES.txt -o CID-SMILES_train.txt -v vocab.voc
+python main.py -i CID-SMILES_train.txt -e 5 --lossWeight none -v vocab.voc
 ```
 ```
 usage: main.py [-h] [-i INPUT] [-e EPOCHS] [--lossWeight {none,log,sqrt,raw}]
