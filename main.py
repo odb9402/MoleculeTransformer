@@ -18,25 +18,31 @@ if args.input == None:
 
 trainer = MoleculeTransformerTrainer(args.input,
                                      class_weight=args.lossWeight,
-                                     vocab_file=args.vocab)
+                                     vocab_file=args.vocab,
+                                     n_tokens=415)
 
 print("Dataset split. . . .")
-directory = MoleculeTransformerTrainer.split_file(args.input)
+directory = MoleculeTransformerTrainer.split_file(args.input, line_num=1000000)
 datasets = glob.glob(directory + "/*")
 print("Splited datasets:" + str(datasets))
 
 if args.vocab != None:
     trainer.load_vocab()
-print(trainer.smile_mol_tokenizer.vocab.stoi)
-trainer.build_model()
-trainer.print_params()
+    print(trainer.smile_mol_tokenizer.vocab.stoi)
+    print(len(trainer.smile_mol_tokenizer.vocab.stoi))
+
 print("Training processes . . . .")
 
+build=False
 for i in range(args.epochs):
     for data in datasets:
         print("Load the dataset {}".format(data))
         trainer.gen_dataloader(data)
         print("Training for splited file {}".format(data))
+        if not build:
+            trainer.build_model()
+            trainer.model_summary()
+            build = True
         trainer.train(log='stdout')
     trainer.save_model("model{}".format(i+1))
     acc = trainer.evaluate_acc()

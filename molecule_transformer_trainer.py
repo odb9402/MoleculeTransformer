@@ -19,14 +19,14 @@ class MoleculeTransformerTrainer():
     Methods:
 
     """
-    def __init__(self, train_file=None, vocab_file=None, class_weight='none'):
+    def __init__(self, train_file=None, vocab_file=None, class_weight='none', n_tokens=73):
         self.mol_emsize = 128 # Embedded molecule sizes
         self.n_layers = 8 # Number of attentions and feed-forwards
         self.n_head = 8 # Attention heads
         self.n_hid = 512 # feed forward dim
         self.lr = 0.0001
         self.epochs = 3
-        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+        self.device = torch.device("cuda:1" if torch.cuda.is_available() else "cpu")
         self.class_weight=class_weight
         self.vocab_file = vocab_file
 
@@ -34,8 +34,9 @@ class MoleculeTransformerTrainer():
         self.gen_tokenizers()
         print("Generate dataloaders. . . .")
         #self.gen_dataloader(train_file)
+        
+        self.n_tokens = n_tokens # 73
 
-        self.n_tokens = 73#len(self.smile_mol_tokenizer.vocab.stoi)
 
         self.loss_history = []
         self.acc_history = []
@@ -51,8 +52,8 @@ class MoleculeTransformerTrainer():
         """
         self.smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>', ### $ is the [BEGIN]
                                                   pad_token='<PAD>',
-                                                  tokenize=list,
-                                                  #tokenize=self.tokenize_train_new,
+                                                  #tokenize=list,
+                                                  tokenize=self.tokenize_train_new,
                                                   fix_length=100,
                                                   batch_first=True)
 
@@ -256,9 +257,10 @@ class MoleculeTransformerTrainer():
         self.untargeted_tokens = ['<unk>', '<PAD>', '<REP>', '$', ' ']
         
     def print_params(self):
-        print("Model parameters::")
+        print("Model Tensors::")
         for param_tensor in self.model.state_dict():
             print(param_tensor, "\t", self.model.state_dict()[param_tensor].size())
+        print("Model parameters::" + str(sum(p.numel() for p in self.model.parameters())))
 
     def print_status(self):
         print("Model hyperparameters::")
@@ -416,3 +418,31 @@ class MoleculeTransformerTrainer():
             new_file.close()
         
         return target_dir
+    
+    def model_summary(self):
+        print("model_summary")
+        print()
+        print("Layer_name"+"\t"*7+"Number of Parameters")
+        print("="*100)
+        model_parameters = [layer for layer in self.model.parameters() if layer.requires_grad]
+        layer_name = [child for child in self.model.children()]
+        j = 0
+        total_params = 0
+        print("\t"*10)
+        for i in layer_name:
+            print()
+            param = 0
+            try:
+                bias = (i.bias is not None)
+            except:
+                bias = False  
+            if not bias:
+                param =model_parameters[j].numel()+model_parameters[j+1].numel()
+                j = j+2
+            else:
+                param =model_parameters[j].numel()
+                j = j+1
+            print(str(i)+"\t"*3+str(param))
+            total_params+=param
+        print("="*100)
+        print(f"Total Params:{total_params}")    

@@ -14,7 +14,7 @@ import argparse
 parser = argparse.ArgumentParser(description="Molecule transformer training")
 parser.add_argument("-i", "--input", default="CID-SMILES.txt", help="Input training raw SMILES file.")
 parser.add_argument("-o", "--output", default="CID-SMILES_train_tok.txt", help="Comma separated training SMILES file.")
-parser.add_argument("-v", "--vocab", default="mt_vocab.voc", help="Saved torch tensor file for the vocab.")
+parser.add_argument("-v", "--vocab", default="preproc_vocab.voc", help="Saved torch tensor file for the vocab.")
 parser.add_argument("--experimental", action='store_true', help="Using experimental tokenization: See the molecule_transformer_trainer.py")
 args = parser.parse_args()
 
@@ -24,7 +24,7 @@ masked_output_file = args.output #'./CID-SMILES_train_valid.txt'
 def valid_SMILES(mol_str):
     template = re.compile('(^([^J][0-9BCOHNSOPrIFla@+\-\[\]\(\)\\\/%=#$]{6,})$)', re.I)
     match = template.match(mol_str)
-    return bool(match)
+    return bool(match
 
 """
 result = sp.check_output(["sh", "count.sh", args.input])

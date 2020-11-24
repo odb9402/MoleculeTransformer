@@ -7,6 +7,10 @@ import random
 import math
 
 class MoleculeTransformer(torch.nn.Module):
+    """
+    GPU memory consumption: 5939 Mb
+    
+    """
     def __init__(self, ntoken, ninp, nhead, nhid, nlayers, dropout=0.1):
         super(MoleculeTransformer, self).__init__()
         from torch.nn import TransformerEncoder, TransformerEncoderLayer
