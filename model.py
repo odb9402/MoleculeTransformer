@@ -53,7 +53,12 @@ class MoleculeTransformer(torch.nn.Module):
         self.layer_norm.bias.data.zero_()
 
 
-    def forward(self, src):
+    def forward(self, src, latent_out=False):
+        """
+        latent_out:
+            If latent_out == true, the model will return the transformer encoding latent values,
+            not a decoded vectors using self.decoder.
+        """
         pos = torch.arange(0,100).long().to(src.device)
 
         mol_token_emb = self.encoder(src)
@@ -68,6 +73,9 @@ class MoleculeTransformer(torch.nn.Module):
         attention_mask = attention_mask.bool().to(src.device)
 
         output = self.transformer_encoder(input_emb)#, src_key_padding_mask=attention_mask) ### Self-attention layers : dim = ninp
+        
+        if latent_out:
+            return output
         output = self.decoder(output) + self.decoder_bias ### decoding
 
         return output

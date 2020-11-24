@@ -41,6 +41,14 @@ class MoleculeTransformerTrainer():
         self.acc_history = []
 
     def gen_tokenizers(self):
+        """
+        
+        
+        Vocabulary
+        [BEGIN] token: '$'
+        [END] token: '$'
+        [PAD] token: '<pad>'
+        """
         self.smile_mol_tokenizer = torchtext.data.Field(init_token='<REP>', ### $ is the [BEGIN]
                                                   pad_token='<PAD>',
                                                   tokenize=list,
@@ -54,13 +62,26 @@ class MoleculeTransformerTrainer():
                                                          tokenize=self.tokenize_label,
                                                          batch_first=True)
 
-    def gen_dataloader(self, train_file):
+    def gen_dataloader(self, train_file, evaluate=False):
+        """
+        It generates train and test dataloaders "self.train_batch", "self.test_batch"
+        
+        train_file: preprocessed SMILES csv file by using "preprocess.py"
+        
+        **Note that the vocabulary (self.smile_mol_tokenizer.vocab) will be built
+        with unmasked SMILES. And the [MASKED] token will be '<unk>' for the vocab.**
+        
+        """
         smile_data_training = torchtext.data.TabularDataset(path=train_file,
                                                   format='csv',
                                                   fields=[('input', self.smile_mol_tokenizer),
                                                           ('output', self.smile_mol_masked_tokenizer)])
-
-        self.train_data, self.test_data = smile_data_training.split(split_ratio=0.8)
+        
+        if evaluate:
+            pass
+        else:
+            self.train_data, self.test_data = smile_data_training.split(split_ratio=0.8)
+            
         if self.vocab_file == None:
             print("Build vocabulary")
             self.smile_mol_tokenizer.build_vocab(smile_data_training)
@@ -72,7 +93,17 @@ class MoleculeTransformerTrainer():
             self.smile_mol_tokenizer.vocab = saved_tokens
         self.smile_mol_masked_tokenizer.vocab = self.smile_mol_tokenizer.vocab
         print("Gen Iterator")
-        self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
+        token_idx = self.smile_mol_tokenizer.vocab.stoi
+        self.ignored_token = token_idx['<unk>']
+        self.mask_token = token_idx[' ']
+        self.untargeted_tokens = ['<unk>', '<PAD>', '<REP>', '$', ' ']
+        
+        if evaluate:
+            self.test_batch = torchtext.data.Iterator(torchtext.data.Iterator(smile_data_training,
+                                                                             batch_size=256,
+                                                                             device=self.device))
+        else:
+            self.train_batch, self.test_batch = torchtext.data.BucketIterator.splits((self.train_data, self.test_data),
                                                                       batch_size=256,
                                                                       shuffle=True,
                                                                       device=self.device,
@@ -205,10 +236,10 @@ class MoleculeTransformerTrainer():
                                       self.n_head,
                                       self.n_hid,
                                       self.n_layers).to(self.device)
-        self.model.load_state_dict(torch.load(PATH))
+        self.model.load_state_dict(torch.load(PATH, map_location=torch.device(self.device)))
 
     def save_vocab(self, PATH="vocab"):
-        torch.save(self.smile_mol_tokenizer, PATH)
+        torch.save(self.smile_mol_tokenizer.vocab, PATH)
     
     def load_vocab(self, PATH=None):
         if PATH == None:
@@ -299,6 +330,7 @@ class MoleculeTransformerTrainer():
         long_chr = False
         mol_str = mol_str.rstrip()
         current_str = ''
+        template = re.compile('[0-9]+', re.I)
 
         i = 0
         while i < len(mol_str):
@@ -324,15 +356,20 @@ class MoleculeTransformerTrainer():
             if not long_chr:
                 # Ignore isotypes
                 if current_str[0] == '[':
-                #    isotype_ignored_str = '['
-                #    isotype_switch = False
-                #    for j in range(len(current_str)):
-                #        if re.match([0-9]^, j+1):
-                #            isotype_switch = True
-                #        if isotype_switch:
-                #            isotype_ignored_str += current_str[j]
-                #    tokens.append(isotype_ignored_str)
-                    tokens.append(current_str)
+                    isotype_ignored_str = '['
+                    isotype_switch = False
+                    write_switch = False
+                    for j in range(1, len(current_str)-1):
+                        if template.match(current_str[j]):
+                            isotype_switch = True
+                        else:
+                            if isotype_switch:
+                                write_switch = True
+                        if not isotype_switch or write_switch:
+                            isotype_ignored_str += current_str[j]
+                    isotype_ignored_str += ']'
+                    tokens.append(isotype_ignored_str)
+                #    tokens.append(current_str)
                 else:
                     tokens.append(current_str)
                 current_str = ''
